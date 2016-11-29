@@ -100,6 +100,7 @@ use yii\helpers\Url;
                 <th>职位</th>
                 <th>联系方式</th>
                 <th>好评</th>
+                <th>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>
