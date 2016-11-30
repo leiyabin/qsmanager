@@ -10,8 +10,6 @@ namespace app\controllers\admin;
 
 use app\components\LController;
 use app\components\Utils;
-use app\consts\ErrorCode;
-use app\exception\RequestException;
 use app\manager\IntroductionManager;
 use app\manager\ConfigManager;
 use yii\data\Pagination;

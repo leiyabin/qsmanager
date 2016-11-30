@@ -106,10 +106,21 @@ class Utils
 
     public static function getSummary($content, $length, $start = 0)
     {
-        $content = strip_tags($content);
-        $content = preg_replace('/\s/', '', $content);
-        $summary = mb_substr($content, $start, $length, "utf-8");
+        $content = preg_replace('/(\s|\&nbsp\;|　|\xc2\xa0)/', '', strip_tags($content));
+        $summary = mb_substr(trim($content), $start, $length, "utf-8");
         return $summary;
+    }
+
+    public static function deleteHtml($str)
+    {
+        $str = trim($str);
+        $str = strip_tags($str,"");
+        $str = ereg_replace("\t","",$str);
+        $str = ereg_replace("\r\n","",$str);
+        $str = ereg_replace("\r","",$str);
+        $str = ereg_replace("\n","",$str);
+        $str = ereg_replace(" "," ",$str);
+        return trim($str);
     }
 
 }
