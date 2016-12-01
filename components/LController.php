@@ -114,7 +114,8 @@ class LController extends Controller
         $request = sprintf('【REQUEST】 method: %s url: %s ; params: %s',
             Yii::$app->request->getMethod(), Yii::$app->request->getUrl(), json_encode($this->params, JSON_UNESCAPED_UNICODE));
         Yii::info($request, LogConst::REQUEST);
-        $controller_name = end(explode('/', $this->id));
+        $arr = explode('/', $this->id);
+        $controller_name = end($arr);
         if (in_array($controller_name, self::$auth_controllers)) {
             $user_info = AdminManager::auth();
             if (empty($user_info)) {
