@@ -10,6 +10,7 @@ namespace app\controllers\admin;
 
 use app\components\LController;
 use app\components\Utils;
+use app\consts\ConfigConst;
 use app\consts\ErrorCode;
 use app\exception\RequestException;
 use app\manager\IntroductionManager;
@@ -26,9 +27,6 @@ class OverseaController extends LController
      */
     public $config_manager;
 
-    const CLASS_ID = 10;
-    const ID = 1;
-
     public function init()
     {
         parent::init();
@@ -39,7 +37,7 @@ class OverseaController extends LController
     public function actionIndex()
     {
         if (!$this->is_post) {
-            $oversea = $this->introduction_manager->get(self::ID);
+            $oversea = $this->introduction_manager->get(ConfigConst::OVERSEA_ID);
             if (empty($oversea)) {
                 throw new RequestException('没有找到海外房产对应的信息', ErrorCode::NOT_FOUND);
             } else {
@@ -54,10 +52,10 @@ class OverseaController extends LController
                 return $this->error('请输入内容！');
             }
             $oversea = [
-                'class_id' => self::CLASS_ID,
+                'class_id' => ConfigConst::OVERSEA_CLASS_CONST,
                 'title'    => $this->params['title'],
                 'content'  => $this->params['content'],
-                'id'       => self::ID
+                'id'       => ConfigConst::OVERSEA_ID
             ];
             $res = $this->introduction_manager->edit($oversea);
             if ($this->hasError($res)) {

@@ -10,6 +10,7 @@ namespace app\controllers\admin;
 
 use app\components\LController;
 use app\components\Utils;
+use app\consts\ConfigConst;
 use app\manager\IntroductionManager;
 use app\manager\ConfigManager;
 use yii\data\Pagination;
@@ -25,8 +26,6 @@ class FinancialController extends LController
      */
     public $config_manager;
 
-    const CLASS_ID = 11;
-
     public function init()
     {
         parent::init();
@@ -40,7 +39,7 @@ class FinancialController extends LController
         $pages = new Pagination(['totalCount' => 0, 'defaultPageSize' => $this->page_size]);
         $page = empty($this->params['page']) ? $this->default_page : $this->params['page'];
         $page_info = ['page' => $page, 'pre_page' => $this->page_size];
-        $res = $this->introduction_manager->getList($page_info, self::CLASS_ID);
+        $res = $this->introduction_manager->getList($page_info, ConfigConst::FINANCIAL_CLASS_CONST);
         if (!$this->hasError($res)) {
             $pages = new Pagination(['totalCount' => $res->total, 'defaultPageSize' => $res->per_page]);
             $financial_list = $res->introduction_list;
@@ -76,7 +75,7 @@ class FinancialController extends LController
                 return $this->error('请输入内容！');
             }
             $financial = [
-                'class_id' => self::CLASS_ID,
+                'class_id' => ConfigConst::FINANCIAL_CLASS_CONST,
                 'title'    => $this->params['title'],
                 'content'  => $this->params['content'],
                 'id'       => $id,
@@ -106,7 +105,7 @@ class FinancialController extends LController
                 return $this->error('请输入内容！');
             }
             $financial = [
-                'class_id' => self::CLASS_ID,
+                'class_id' => ConfigConst::FINANCIAL_CLASS_CONST,
                 'title'    => $this->params['title'],
                 'content'  => $this->params['content'],
                 'img'      => $this->params['img'],
