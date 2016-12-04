@@ -313,7 +313,7 @@ use yii\widgets\ActiveForm;
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label" style="width: 12%">备注
+                <label class="col-sm-3 control-label" style="width: 12%">户型解读
                 </label>
                 <div class="col-sm-6">
                     <input type="text" name="remark" class="form-control">

@@ -130,10 +130,9 @@ class DoormodelController extends LController
     private function getDoorModel()
     {
         $door_model = [
-
             'face'        => $this->params['face'],
             'shitinwei'   => $this->params['shitinwei'],
-            'build_area'  => $this->params['build_area'],
+            'build_area'  => intval($this->params['build_area']),
             'decoration'  => $this->params['decoration'],
             'img'         => $this->params['img'],
             'tag_1'       => $this->params['tag_1'],
