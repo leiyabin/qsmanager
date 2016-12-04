@@ -287,7 +287,7 @@ use yii\widgets\ActiveForm;
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
-                    <input type="number" name="right_time"  class="form-control" style="width: 480px; display: inline">年
+                    <input type="number" name="right_time" class="form-control" style="width: 480px; display: inline">年
                 </div>
             </div>
             <div class="form-group">
@@ -300,6 +300,16 @@ use yii\widgets\ActiveForm;
                             <input type="checkbox" value="<?= $key ?>" name="tag"><?= $name ?>
                         </label>
                     <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" style="width: 12%">推荐楼盘
+                    <fond style="color: red">*</fond>
+                </label>
+                <div class="col-sm-6">
+                    <label>
+                        <input type="checkbox" name="recommend">
+                    </label>
                 </div>
             </div>
             <div class="form-group">
@@ -376,6 +386,12 @@ use yii\widgets\ActiveForm;
                 var $img_5 = $('input[name=img_5_url]').val().trim();
                 var $right_time = $('input[name=right_time]').val().trim();
                 var $tag = $('input:checkbox[name=tag]:checked');
+                var $recommend = $('input:checkbox[name=recommend]');
+                if ($recommend[0].checked) {
+                    $recommend = 1;
+                } else {
+                    $recommend = 0;
+                }
                 $tag = getCheckBoxStr($tag);
                 var $remark = $('input[name=remark]').val().trim();
                 if (!checkVal($name, '名称', true, 0, 30)) {
@@ -393,26 +409,32 @@ use yii\widgets\ActiveForm;
                 if (!checkVal($opening_time, '开盘时间', true)) {
                     return;
                 }
-                if($area_id == 0){
-                    alert('请选择片区！');  return;
+                if ($area_id == 0) {
+                    alert('请选择片区！');
+                    return;
                 }
-                if($property_type_id == 0){
-                    alert('请选择物业类型！');  return;
+                if ($property_type_id == 0) {
+                    alert('请选择物业类型！');
+                    return;
                 }
-                if($sale_status == 0){
-                    alert('请选择售卖状态！');  return;
+                if ($sale_status == 0) {
+                    alert('请选择售卖状态！');
+                    return;
                 }
                 if (!checkVal($jiju, '居室情况', true)) {
                     return;
                 }
-                if($min_square == 0){
-                    alert('请填写最小面积！');  return;
+                if ($min_square == 0) {
+                    alert('请填写最小面积！');
+                    return;
                 }
-                if($max_square == 0){
-                    alert('请填写最大面积！');  return;
+                if ($max_square == 0) {
+                    alert('请填写最大面积！');
+                    return;
                 }
-                if($lon == 0 || $lat == 0){
-                    alert('请选择经纬度！');  return;
+                if ($lon == 0 || $lat == 0) {
+                    alert('请选择经纬度！');
+                    return;
                 }
                 if (!checkVal($developers, '开发商', true, 0, 50)) {
                     return;
@@ -438,8 +460,9 @@ use yii\widgets\ActiveForm;
                 if (!checkVal($img_4, '效果图4', true)) {
                     return;
                 }
-                if($right_time == 0){
-                    alert('请填写产权年限！');  return;
+                if ($right_time == 0) {
+                    alert('请填写产权年限！');
+                    return;
                 }
                 if (!checkVal($tag, '楼盘特色', true)) {
                     return;
@@ -475,6 +498,7 @@ use yii\widgets\ActiveForm;
                         img_4: $img_4,
                         right_time: $right_time,
                         tag: $tag,
+                        recommend: $recommend,
                         remark: $remark
                     },
                     success: function (res) {

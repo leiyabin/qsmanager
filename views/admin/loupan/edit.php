@@ -353,6 +353,16 @@ use yii\helpers\Html;
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">推荐楼盘
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <label>
+                    <input type="checkbox" name="recommend" <?php if($loupan->recommend) echo 'checked';?>>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">备注
             </label>
             <div class="col-sm-6">
@@ -426,6 +436,12 @@ use yii\helpers\Html;
             var $right_time = $('input[name=right_time]').val().trim();
             var $tag = $('input:checkbox[name=tag]:checked');
             $tag = getCheckBoxStr($tag);
+            var $recommend = $('input:checkbox[name=recommend]');
+            if ($recommend[0].checked) {
+                $recommend = 1;
+            } else {
+                $recommend = 0;
+            }
             var $remark = $('input[name=remark]').val().trim();
             var $id = $('input[name=id]').val().trim();
             if (!checkVal($name, '名称', true, 0, 30)) {
@@ -533,6 +549,7 @@ use yii\helpers\Html;
                     img_4: $img_4,
                     right_time: $right_time,
                     tag: $tag,
+                    recommend: $recommend,
                     remark: $remark
                 },
                 success: function (res) {

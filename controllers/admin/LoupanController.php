@@ -153,6 +153,7 @@ class LoupanController extends LController
             'img_3'               => $this->params['img_3'],
             'img_4'               => $this->params['img_4'],
             'img_5'               => $this->params['img_5'],
+            'recommend'           => $this->params['recommend'],
         ];
         return $loupan;
     }
@@ -231,12 +232,9 @@ class LoupanController extends LController
         if (!Utils::validVal($this->getRequestParam('tag'), true, 0, 50)) {
             return '请选择楼盘标签！';
         }
-        if (empty($this->params['remark'])) {
-            $this->params['remark'] = '';
-        }
-        if (empty($this->params['img_5'])) {
-            $this->params['img_5'] = '';
-        }
+        $this->params['remark'] = $this->getRequestParam('remark', '');
+        $this->params['img_5'] = $this->getRequestParam('img_5', '');
+        $this->params['recommend'] = $this->getRequestParam('recommend', 0);
         return '';
     }
 
