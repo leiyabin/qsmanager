@@ -58,11 +58,11 @@ use yii\helpers\Url;
                                         class="fa fa-caret-right"></i> 用户列表</a></li>
                         </ul>
                     </li>
-                    <li class="nav-parent"><a href=""><i class="fa fa-edit"></i> <span>二手房</span></a>
-                        <ul class="children">
-                            <li><a href="/admin/house/index/"><i class="fa fa-caret-right"></i>二手房列表</a></li>
-                        </ul>
-                    </li>
+<!--                    <li class="nav-parent"><a href=""><i class="fa fa-edit"></i> <span>二手房</span></a>-->
+<!--                        <ul class="children">-->
+<!--                            <li><a href="/admin/house/index/"><i class="fa fa-caret-right"></i>二手房列表</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
                     <li class="nav-parent"><a href=""><i class="fa fa-edit"></i> <span>新房</span></a>
                         <ul class="children">
                             <li><a href="/admin/loupan/index/"><i class="fa fa-caret-right"></i>楼盘列表</a></li>
