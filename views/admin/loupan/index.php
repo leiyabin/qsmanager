@@ -107,6 +107,5 @@ use yii\helpers\Url;
         <div>
             <?= \yii\widgets\LinkPager::widget(['pagination' => $pages]); ?>
         </div>
-        <button class="btn btn-primary btn-sm" id="batchDel">批量删除</button>
     </div>
 </div>
