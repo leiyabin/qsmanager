@@ -15,16 +15,16 @@ class HouseRpc extends LRpc
     public function edit($loupan)
     {
         $params = $loupan;
-        return LRpc::init()->post($params)->url('/loupan/edit');
+        return LRpc::init()->post($params)->url('/house/edit');
     }
 
     public function getOne($id)
     {
         $params = ['id' => $id];
-        return LRpc::init()->post($params)->url('/loupan/get');
+        return LRpc::init()->post($params)->url('/house/get');
     }
 
-    public function getList($page_info, $area_id = 0, $property_type_id = 0)
+    public function getList($page_info, $area_id, $property_type_id)
     {
         $params = [
             'page'             => intval($page_info['page']),
@@ -32,6 +32,6 @@ class HouseRpc extends LRpc
             'area_id'          => $area_id,
             'property_type_id' => $property_type_id,
         ];
-        return LRpc::init()->post($params)->url('/loupan/list');
+        return LRpc::init()->post($params)->url('/house/list');
     }
 }

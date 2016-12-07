@@ -8,8 +8,41 @@
 
 namespace app\manager;
 
+use app\components\Utils;
+use app\rpc\HouseRpc;
 
 class HouseManager
 {
+    public $house_rpc;
 
+    public function __construct()
+    {
+        $this->house_rpc = new HouseRpc();
+    }
+
+    public function get($id)
+    {
+        $res = $this->house_rpc->getOne($id);
+        if (isset($res->id)) {
+            return $res;
+        } else {
+            return null;
+        }
+    }
+
+    public function edit($house)
+    {
+        return $this->house_rpc->edit($house);
+    }
+
+    public function getList($page_info, $area_id, $property_type_id)
+    {
+        $res = $this->house_rpc->getList($page_info, $area_id, $property_type_id);
+        if (isset($res->error_code)) {
+            return null;
+        } else {
+            //todo
+            return $res;
+        }
+    }
 }
