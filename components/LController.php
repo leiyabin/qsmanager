@@ -14,6 +14,7 @@ use app\exception\RequestException;
 use app\manager\AdminManager;
 use yii\web\Controller;
 use Yii;
+use yii\base\InvalidRouteException;
 
 class LController extends Controller
 {
@@ -131,6 +132,9 @@ class LController extends Controller
     {
         try {
             return parent::runAction($id, $params);
+        } catch (InvalidRouteException $e) {
+            Yii::error($e->getMessage(), LogConst::REQUEST);
+            $this->redirect('/admin/error/404')->send();
         } catch (\Exception $e) {
             $error_string = sprintf('【error】 MSG:%s ;TRACE:%s ', $e->getMessage(), $e->getTraceAsString());
             Yii::error($error_string);
