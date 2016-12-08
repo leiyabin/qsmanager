@@ -103,55 +103,6 @@ use yii\helpers\Html;
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">售卖状态
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6 dropdown">
-                <button style="width: 200px;" class="btn btn-default dropdown-toggle" type="button"
-                        tag="<?= $house->sale_status; ?>" id="dropdownMenu4" data-toggle="dropdown">
-                    <?= $house->sale_status_name; ?>
-                </button>
-                <ul style="margin-left: 10px" class="dropdown-menu" role="menu">
-                    <?php foreach (\app\consts\HouseConst::$sale_status as $key => $name): ?>
-                        <li class="li_on_click" role="presentation" tag="<?= $key ?>">
-                            <a role="menuitem" tabindex="-1" href="#"><?= $name ?></a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">居室情况
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <?php foreach (\app\consts\HouseConst::$room_num as $key => $name): ?>
-                    <label>
-                        <input type="checkbox" value="<?= $key ?>"
-                               name="jiju" <?php if (in_array($key, $house->jiju_arr)) echo 'checked' ?> ><?= $name ?>
-                    </label>
-                <?php endforeach; ?>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">最小面积
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <input type="number" name="min_square" class="form-control" style="width: 450px; display: inline"
-                       value="<?= $house->min_square ?>">平方米
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">最大面积
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <input type="number" name="max_square" class="form-control" style="width: 450px; display: inline"
-                       value="<?= $house->max_square ?>">平方米
-            </div>
-        </div>
-        <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">经纬度
                 <fond style="color: red">*</fond>
             </label>
