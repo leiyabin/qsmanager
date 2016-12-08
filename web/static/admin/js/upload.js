@@ -24,7 +24,7 @@ function ajaxFileUpload(file_name) {
                 }
             },
             error:function (data) {
-                alert('服务器出错！')
+                alert('上传失败！请重新登录后再试！')
             }
         });
     } else {

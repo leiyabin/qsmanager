@@ -16,15 +16,13 @@ use yii\helpers\Html;
 <script type="text/javascript" src="/datetime/jedate/jedate.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
 <script type="text/javascript">
-    $(function () {
-        jeDate({
-            dateCell: "#dateinfo",
-            isinitVal: true,
-            isTime: true //isClear:false,
-        });
-    })
-    var honse_lat = '<?= $house->lat?>';
-    var honse_lon = '<?= $house->lon?>';
+//    $(function () {
+//        jeDate({
+//            dateCell: "#dateinfo",
+//            isinitVal: true,
+//            isTime: true //isClear:false,
+//        });
+//    })
 </script>
 <?php $this->beginBlock('breadcrumb');//面包屑导航 ?>
 <div class="pageheader" style="height: 50px;padding-top: 10px">
@@ -39,72 +37,164 @@ use yii\helpers\Html;
 <div class="panel panel-default">
     <input type="hidden" name="id" value="<?= $house->id ?>">
     <div class="panel-body">
-<!--        <div class="form-group">-->
-<!--            <label class="col-sm-3 control-label" style="width: 12%">区县/片区-->
-<!--            </label>-->
-<!--            <div class="col-sm-6 dropdown" style="float:left; width: 296px;">-->
-<!--                <input type="text" name="sale_office_address" class="form-control"-->
-<!--                       value="--><?//= $house->sale_office_address ?><!--">-->
-<!--            </div>-->
-<!--            <div class="col-sm-6 dropdown" style="float:left;  width: 296px; margin-left: -30px">-->
-<!--                <button style="width: 230px;" class="btn btn-default dropdown-toggle" type="button"-->
-<!--                        tag="--><?//= $house->area_id; ?><!--"-->
-<!--                        id="dropdownMenu2"-->
-<!--                        data-toggle="dropdown">-->
-<!--                    --><?//= $house->area_name; ?>
-<!--                </button>-->
-<!--                <ul style="margin-left: 10px;" class="dropdown-menu area-dropdown" role="menu">-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">单价
+            <label class="col-sm-3 control-label" style="width: 12%">区县/片区
             </label>
-            <div class="col-sm-6">
-                <input type="number" name="average_price" style="width: 460px; display: inline"
-                       class="form-control" value="<?= $house->unit_price ?>">元
+            <div class="col-sm-6 dropdown" style="float:left; width: 242px;">
+                <input type="text"  disabled class="form-control"
+                       value="<?= $house->quxian_name ?>">
+            </div>
+            <div class="col-sm-6 dropdown" style="float:left;  width: 242px; margin-left: 30px">
+                <input type="text"  class="form-control" disabled
+                       value="<?= $house->area_name ?>">
+                </ul>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">项目地址
+            <label class="col-sm-3 control-label" style="width: 12%">地址
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled name="address" class="form-control" value="<?= $house->address ?>">
+                <input type="text" disabled  class="form-control" value="<?= $house->address ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">物业公司
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  class="form-control" value="<?= $house->property_company ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">物业类型
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  class="form-control" value="<?= $house->property_type ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">房龄
             </label>
-
             <div class="col-sm-6">
-                <input type="text" readonly id="dateinfo" name="opening_time" class="form-control datainp"
-                       value="<?= $house->house_age; ?>">
+                <input type="text" disabled  style="width: 460px; display: inline" class="form-control"
+                       class="form-control" value="<?= $house->house_age ?>">年
             </div>
         </div>
-
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">物业类型
+            <label class="col-sm-3 control-label" style="width: 12%">所在楼层
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  style="width: 460px; display: inline" class="form-control"
+                       value="<?= $house->in_floor ?>">层
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">总楼层
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  style="width: 460px; display: inline" class="form-control"
+                       value="<?= $house->total_floor ?>">层
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">户型
+            </label>
+            <div class="col-sm-6">
+               <label><?= $house->jishi ?>室&nbsp;&nbsp;<?= $house->jitin ?>厅&nbsp;&nbsp;<?= $house->jiwei ?>卫&nbsp;&nbsp;
+                   <?= $house->jichu ?>厨&nbsp;&nbsp;<?= $house->jiyangtai ?>阳台</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">装修
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  class="form-control" value="<?= $house->decoration_name ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">产权类型
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  class="form-control" value="<?= $house->right_type_name ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">购买方式
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  class="form-control" value="<?= $house->buy_type_name ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">单价
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  class="form-control" style="width: 460px; display: inline"
+                       value="<?= $house->unit_price ?>">元
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">总价
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  class="form-control" style="width: 460px; display: inline"
+                       value="<?= $house->total_price ?>">万元
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">朝向
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  class="form-control" value="<?= $house->face ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">建筑面积
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  class="form-control" style="width: 460px; display: inline"
+                       value="<?= $house->build_area ?>">平米
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">房屋设施
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  class="form-control" value="<?= $house->house_facility ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">房屋描述
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  class="form-control" value="<?= $house->house_description ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">楼层单元
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  class="form-control" value="<?= $house->floor_unit ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">关键字
+            </label>
+            <div class="col-sm-6">
+                <input type="text" disabled  class="form-control" value="<?= $house->keywords ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">设置推荐
                 <fond style="color: red">*</fond>
             </label>
-            <div class="col-sm-6 dropdown">
-                <button style="width: 200px;" class="btn btn-default dropdown-toggle" type="button"
-                        tag="<?= $house->property_type_id; ?>"
-                        id="dropdownMenu3"
-                        data-toggle="dropdown">
-                    <?= $house->property_type; ?>
-                </button>
-                <ul style="margin-left: 10px" class="dropdown-menu" role="menu">
-                    <?php foreach (\app\consts\HouseConst::$property_type as $key => $name): ?>
-                        <li class="li_on_click" role="presentation" tag="<?= $key ?>">
-                            <a role="menuitem" tabindex="-1" href="#"><?= $name ?></a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
+            <div class="col-sm-6">
+                <label>
+                    <input type="checkbox" name="recommend" <?php if($house->recommend) echo 'checked';?>>
+                </label>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">经纬度
-                <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6" style="width:800px;">
                 <div style=" margin:auto;width:800px;height:600px;border:2px solid gray; margin-bottom:20px;"
@@ -119,174 +209,6 @@ use yii\helpers\Html;
                 <fond style="float:left;line-height:40px; margin:0 20px">维度</fond>
                 <input style="float: left;width:150px" readonly id="lat" name="lat" type="text" maxlength="9"
                        class="form-control" value="<?= $house->lat ?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">开发商
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <input type="text" name="developers" class="form-control" value="<?= $house->developers ?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">物业公司
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <input type="text" name="property_company" class="form-control"
-                       value="<?= $house->property_company ?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">banner图
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6" style="width: 700px;">
-                <label style="color: blue;display: block;">*请上传图片尺寸1200*336（或是长:宽=4:1）的图片</label>
-                <input type="file" id="banner_img" name="banner_img" style="display:inline">
-                <input type="button" tag="banner_img" value="上传" class="upload_file">
-                <input type="hidden" name="banner_img_url" value="<?= $house->banner_img; ?>">
-                <?php
-                if (!empty($house->banner_img_url)) {
-                    echo '<a target="_blank" class="upload_res" href="' . $house->banner_img_url . '">点击查看</a>';
-                }
-                ?>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">楼盘图片
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <label style="color: blue;display: block;">*请上传图片尺寸360*200（或是长:宽=9:5）的图片</label>
-                <input type="file" id="loupan_img" name="loupan_img" style="display:inline">
-                <input type="button" tag="loupan_img" value="上传" class="upload_file">
-                <input type="hidden" name="loupan_img_url" value="<?= $house->img; ?>">
-                <?php
-                if (!empty($house->img_url)) {
-                    echo '<a target="_blank" class="upload_res" href="' . $house->img_url . '">点击查看</a>';
-                }
-                ?>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">效果图1
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
-                <input type="file" id="img_1" name="img_1" style="display:inline">
-                <input type="button" tag="img_1" value="上传" class="upload_file">
-                <input type="hidden" name="img_1_url" value="<?= $house->img_1; ?>">
-                <?php
-                if (!empty($house->img_1_url)) {
-                    echo '<a target="_blank" class="upload_res" href="' . $house->img_1_url . '">点击查看</a>';
-                }
-                ?>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">效果图2
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
-                <input type="file" id="img_2" name="img_2" style="display:inline">
-                <input type="button" tag="img_2" value="上传" class="upload_file">
-                <input type="hidden" name="img_2_url" value="<?= $house->img_2; ?>">
-                <?php
-                if (!empty($house->img_2_url)) {
-                    echo '<a target="_blank" class="upload_res" href="' . $house->img_2_url . '">点击查看</a>';
-                }
-                ?>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">效果图3
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
-                <input type="file" id="img_3" name="img_3" style="display:inline">
-                <input type="button" tag="img_3" value="上传" class="upload_file">
-                <input type="hidden" name="img_3_url" value="<?= $house->img_3; ?>">
-                <?php
-                if (!empty($house->img_3_url)) {
-                    echo '<a target="_blank" class="upload_res" href="' . $house->img_3_url . '">点击查看</a>';
-                }
-                ?>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">效果图4
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
-                <input type="file" id="img_4" name="img_4" style="display:inline">
-                <input type="button" tag="img_4" value="上传" class="upload_file">
-                <input type="hidden" name="img_4_url" value="<?= $house->img_4; ?>">
-                <?php
-                if (!empty($house->img_4_url)) {
-                    echo '<a target="_blank" class="upload_res" href="' . $house->img_4_url . '">点击查看</a>';
-                }
-                ?>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">效果图5
-            </label>
-            <div class="col-sm-6">
-                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
-                <input type="file" id="img_5" name="img_5" style="display:inline">
-                <input type="button" tag="img_5" value="上传" class="upload_file">
-                <input type="hidden" name="img_5_url" value="<?= $house->img_5; ?>">
-                <?php
-                if (!empty($house->img_5_url)) {
-                    echo '<a target="_blank" class="upload_res" href="' . $house->img_5_url . '">点击查看</a>';
-                }
-                ?>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">产权年限
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <input type="number" name="right_time" class="form-control"
-                       style="width: 480px; display: inline" value="<?= $house->right_time ?>">年
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">楼盘特色
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <?php foreach (\app\consts\HouseConst::$feature as $key => $name): ?>
-                    <label>
-                        <input type="checkbox"
-                               value="<?= $key ?>" <?php if (in_array($key, $house->tag_arr)) echo 'checked' ?> <?= $name ?>
-                               name="tag"><?= $name ?>
-                    </label>
-                <?php endforeach; ?>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">推荐楼盘
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <label>
-                    <input type="checkbox" name="recommend" <?php if ($house->recommend) echo 'checked'; ?>>
-                </label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">户型解读
-            </label>
-            <div class="col-sm-6">
-                <input type="text" name="remark" class="form-control" value="<?= $house->remark ?>">
             </div>
         </div>
     </div>

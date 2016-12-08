@@ -8,6 +8,7 @@ $config = [
     'id'         => 'basic',
     'language'   => 'zh-CN',
     'basePath'   => dirname(__DIR__),
+    'defaultRoute' => '/admin/auth/login',
     'bootstrap'  => ['log'],
     'components' => [
         'request'       => [
