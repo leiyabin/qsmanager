@@ -6,10 +6,10 @@ $(function () {
     map.setDefaultCursor("crosshair");
 
     map.enableScrollWheelZoom();
-    if (typeof(honse_lon) == 'undefined') {
+    if (typeof(honse_lon) == 'undefined' || honse_lon == 0) {
         honse_lon = 116.404032;
     }
-    if (typeof(honse_lat) == 'undefined') {
+    if (typeof(honse_lat) == 'undefined' || honse_lat == 0) {
         honse_lat = 39.915022;
     }
     var point = new BMap.Point(honse_lon, honse_lat);

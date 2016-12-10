@@ -5,6 +5,8 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  */
 use yii\helpers\Html;
+use app\components\Utils;
+use app\consts\HouseConst;
 
 ?>
 
@@ -16,13 +18,20 @@ use yii\helpers\Html;
 <script type="text/javascript" src="/datetime/jedate/jedate.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
 <script type="text/javascript">
-//    $(function () {
-//        jeDate({
-//            dateCell: "#dateinfo",
-//            isinitVal: true,
-//            isTime: true //isClear:false,
-//        });
-//    })
+    $(function () {
+        jeDate({
+            dateCell: "#dateinfo1",
+            isinitVal: false,
+            isTime: true //isClear:false,
+        });
+        jeDate({
+            dateCell: "#dateinfo2",
+            isinitVal: false,
+            isTime: true //isClear:false,
+        });
+    });
+    var honse_lat = '<?= $house->lat ?>';
+    var honse_lon = '<?= $house->lon ?>';
 </script>
 <?php $this->beginBlock('breadcrumb');//面包屑导航 ?>
 <div class="pageheader" style="height: 50px;padding-top: 10px">
@@ -41,11 +50,11 @@ use yii\helpers\Html;
             <label class="col-sm-3 control-label" style="width: 12%">区县/片区
             </label>
             <div class="col-sm-6 dropdown" style="float:left; width: 242px;">
-                <input type="text"  disabled class="form-control"
+                <input type="text" disabled class="form-control"
                        value="<?= $house->quxian_name ?>">
             </div>
             <div class="col-sm-6 dropdown" style="float:left;  width: 242px; margin-left: 30px">
-                <input type="text"  class="form-control" disabled
+                <input type="text" class="form-control" disabled
                        value="<?= $house->area_name ?>">
                 </ul>
             </div>
@@ -54,28 +63,28 @@ use yii\helpers\Html;
             <label class="col-sm-3 control-label" style="width: 12%">地址
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" value="<?= $house->address ?>">
+                <input type="text" disabled class="form-control" value="<?= $house->address ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">物业公司
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" value="<?= $house->property_company ?>">
+                <input type="text" disabled class="form-control" value="<?= $house->property_company ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">物业类型
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" value="<?= $house->property_type ?>">
+                <input type="text" disabled class="form-control" value="<?= $house->property_type ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">房龄
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  style="width: 460px; display: inline" class="form-control"
+                <input type="text" disabled style="width: 460px; display: inline" class="form-control"
                        class="form-control" value="<?= $house->house_age ?>">年
             </div>
         </div>
@@ -83,7 +92,7 @@ use yii\helpers\Html;
             <label class="col-sm-3 control-label" style="width: 12%">所在楼层
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  style="width: 460px; display: inline" class="form-control"
+                <input type="text" disabled style="width: 460px; display: inline" class="form-control"
                        value="<?= $house->in_floor ?>">层
             </div>
         </div>
@@ -91,7 +100,7 @@ use yii\helpers\Html;
             <label class="col-sm-3 control-label" style="width: 12%">总楼层
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  style="width: 460px; display: inline" class="form-control"
+                <input type="text" disabled style="width: 460px; display: inline" class="form-control"
                        value="<?= $house->total_floor ?>">层
             </div>
         </div>
@@ -99,36 +108,36 @@ use yii\helpers\Html;
             <label class="col-sm-3 control-label" style="width: 12%">户型
             </label>
             <div class="col-sm-6">
-               <label><?= $house->jishi ?>室&nbsp;&nbsp;<?= $house->jitin ?>厅&nbsp;&nbsp;<?= $house->jiwei ?>卫&nbsp;&nbsp;
-                   <?= $house->jichu ?>厨&nbsp;&nbsp;<?= $house->jiyangtai ?>阳台</label>
+                <label><?= $house->jishi ?>室&nbsp;&nbsp;<?= $house->jitin ?>厅&nbsp;&nbsp;<?= $house->jiwei ?>卫&nbsp;&nbsp;
+                    <?= $house->jichu ?>厨&nbsp;&nbsp;<?= $house->jiyangtai ?>阳台</label>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">装修
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" value="<?= $house->decoration_name ?>">
+                <input type="text" disabled class="form-control" value="<?= $house->decoration_name ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">产权类型
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" value="<?= $house->right_type_name ?>">
+                <input type="text" disabled class="form-control" value="<?= $house->right_type_name ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">购买方式
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" value="<?= $house->buy_type_name ?>">
+                <input type="text" disabled class="form-control" value="<?= $house->buy_type_name ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">单价
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" style="width: 460px; display: inline"
+                <input type="text" disabled class="form-control" style="width: 460px; display: inline"
                        value="<?= $house->unit_price ?>">元
             </div>
         </div>
@@ -136,7 +145,7 @@ use yii\helpers\Html;
             <label class="col-sm-3 control-label" style="width: 12%">总价
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" style="width: 460px; display: inline"
+                <input type="text" disabled class="form-control" style="width: 460px; display: inline"
                        value="<?= $house->total_price ?>">万元
             </div>
         </div>
@@ -144,14 +153,14 @@ use yii\helpers\Html;
             <label class="col-sm-3 control-label" style="width: 12%">朝向
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" value="<?= $house->face ?>">
+                <input type="text" disabled class="form-control" value="<?= $house->face ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">建筑面积
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" style="width: 460px; display: inline"
+                <input type="text" disabled class="form-control" style="width: 460px; display: inline"
                        value="<?= $house->build_area ?>">平米
             </div>
         </div>
@@ -159,28 +168,28 @@ use yii\helpers\Html;
             <label class="col-sm-3 control-label" style="width: 12%">房屋设施
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" value="<?= $house->house_facility ?>">
+                <input type="text" disabled class="form-control" value="<?= $house->house_facility ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">房屋描述
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" value="<?= $house->house_description ?>">
+                <input type="text" disabled class="form-control" value="<?= $house->house_description ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">楼层单元
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" value="<?= $house->floor_unit ?>">
+                <input type="text" disabled class="form-control" value="<?= $house->floor_unit ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">关键字
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled  class="form-control" value="<?= $house->keywords ?>">
+                <input type="text" disabled class="form-control" value="<?= $house->keywords ?>">
             </div>
         </div>
         <div class="form-group">
@@ -189,12 +198,13 @@ use yii\helpers\Html;
             </label>
             <div class="col-sm-6">
                 <label>
-                    <input type="checkbox" name="recommend" <?php if($house->recommend) echo 'checked';?>>
+                    <input type="checkbox" name="recommend" <?php if ($house->recommend) echo 'checked'; ?>>
                 </label>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">经纬度
+                <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6" style="width:800px;">
                 <div style=" margin:auto;width:800px;height:600px;border:2px solid gray; margin-bottom:20px;"
@@ -211,6 +221,193 @@ use yii\helpers\Html;
                        class="form-control" value="<?= $house->lat ?>">
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">挂牌时间
+                <fond style="color: red">*</fond>
+            </label>
+
+            <div class="col-sm-6">
+                <input type="text" readonly id="dateinfo1" name="sale_time" class="form-control datainp"
+                       value="<?php if (!empty($house->house_attach->sale_time)) echo Utils::formatDateTime($house->house_attach->sale_time); else echo ''; ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">上次交易时间
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <input type="text" readonly id="dateinfo2" name="last_sale_time" class="form-control datainp"
+                       value="<?php if (!empty($house->house_attach->last_sale_time)) echo Utils::formatDateTime($house->house_attach->last_sale_time); else echo ''; ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">房本年限
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6 dropdown">
+                <button style="width: 200px;" class="btn btn-default dropdown-toggle" type="button"
+                        tag="<?= Utils::getValue($house->house_attach, 'deed_year', 0); ?>"
+                        id="dropdownMenu1"
+                        data-toggle="dropdown">
+                    <?= Utils::getValue($house->house_attach, 'deed_year_name', '请选择房本年限'); ?>
+                </button>
+                <ul style="margin-left: 10px" class="dropdown-menu" role="menu">
+                    <?php foreach (HouseConst::$deed_year as $key => $name): ?>
+                        <li class="li_on_click" role="presentation" tag="<?= $key ?>">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)"><?= $name ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">是否唯一
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <label>
+                    <input type="checkbox"
+                           name="is_only" <?php if (!empty($house->house_attach->is_only)) echo 'checked'; ?>>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">抵押信息
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"
+                       name="mortgage_info" <?= Utils::getValue($house->house_attach, 'mortgage_info', '') ?>>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">产权所属
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"
+                       name="right_info" <?= Utils::getValue($house->house_attach, 'right_info', '') ?>>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">小区名称
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"
+                       name="community_name" <?= Utils::getValue($house->house_attach, 'community_name', '') ?>>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">小区图片
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <label style="color: blue;display: block;">*请上传图片尺寸200*120（或是长:宽=5:3）的图片</label>
+                <input type="file" id="house_img" name="house_img" style="display:inline">
+                <input type="button" tag="house_img" value="上传" class="upload_file">
+                <input type="hidden" name="house_img_url"
+                       value="<?= Utils::getValue($house->house_attach, 'house_img', ''); ?>">
+                <?php
+                if (!empty($house->house_attach->house_img_url)) {
+                    echo '<a target="_blank" class="upload_res" href="' . $house->house_attach->house_img_url . '">点击查看</a>';
+                }
+                ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">小区简介
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6" style="width: 900px;">
+                <input type="text" class="form-control"
+                       name="community_introduction" <?= Utils::getValue($house->house_attach, 'community_introduction', '') ?>>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">户型简介
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6" style="width: 900px;">
+                <input type="text" class="form-control"
+                       name="door_model_introduction" <?= Utils::getValue($house->house_attach, 'door_model_introduction', '') ?>>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">教育配套
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6" style="width: 900px;">
+                <input type="text" class="form-control"
+                       name="school_info" <?= Utils::getValue($house->house_attach, 'school_info', '') ?>>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">交通出行
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6" style="width: 900px;">
+                <input type="text" class="form-control"
+                       name="traffic_info" <?= Utils::getValue($house->house_attach, 'traffic_info', '') ?>>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">小区均价
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <input type="number" class="form-control" style="width: 480px; display: inline"
+                       name="community_average_price"
+                    <?= Utils::getValue($house->house_attach, 'community_average_price', '') ?>>元
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">建筑年代
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <input type="number" class="form-control" style="width: 480px; display: inline" name="build_year"
+                    <?= Utils::getValue($house->house_attach, 'build_year', '') ?>>年
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">楼栋总数
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <input type="number" class="form-control" style="width: 480px; display: inline" name="total_building"
+                    <?= Utils::getValue($house->house_attach, 'total_building', '') ?>>栋
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">户型总数
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <input type="number" class="form-control" style="width: 480px; display: inline" name="total_door_model"
+                    <?= Utils::getValue($house->house_attach, 'total_door_model', '') ?>>个
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">建筑类型
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6 dropdown">
+                <button style="width: 200px;" class="btn btn-default dropdown-toggle" type="button"
+                        tag="<?= Utils::getValue($house->house_attach, 'build_type', 0); ?>"
+                        id="dropdownMenu2"
+                        data-toggle="dropdown">
+                    <?= Utils::getValue($house->house_attach, 'build_type_name', '请选择建筑类型'); ?>
+                </button>
+                <ul style="margin-left: 10px" class="dropdown-menu" role="menu">
+                    <?php foreach (HouseConst::$build_type as $key => $name): ?>
+                        <li class="li_on_click" role="presentation" tag="<?= $key ?>">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0)"><?= $name ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
     </div>
     <div class="panel-footer">
         <div class="row">
@@ -222,177 +419,118 @@ use yii\helpers\Html;
 </div>
 <script>
     $(function () {
-        $(".quxian").click(function () {
-            var $class_id = $(this).attr('tag');
-            //获取片区数据
-            $.ajax({
-                url: '/admin/area/getbyclassid',
-                type: 'post',
-                dataType: 'json',
-                data: {
-                    class_id: $class_id
-                },
-                success: function (res) {
-                    if (res.status == 1) {
-                        var $ul = $('.area-dropdown');
-                        $ul.find('li').remove();
-                        $ul.siblings('button').html('请选择片区').attr('tag', 0);
-                        for (var j in res.data) {
-                            $('<li class="li_on_click" onclick="li_on_click_fun($(this))" role="presentation" tag="' + res.data[j].id + '">' +
-                                '<a role="menuitem" tabindex="-1" href="#">' + res.data[j].name + '</a></li>').appendTo($ul);
-                        }
-                    } else {
-                        alert(res.msg);
-                    }
-                },
-                error: function () {
-                    alert('系统错误，请联系客服人员！');
-                }
-            })
-
-        });
         $("#add_button").click(function () {
-            var $name = $('input[name=loupan_name]').val().trim();
-            var $average_price = $('input[name=average_price]').val().trim();
-            var $address = $('input[name=address]').val().trim();
-            var $sale_office_address = $('input[name=sale_office_address]').val().trim();
-            var $opening_time = $('input[name=opening_time]').val().trim();
-            var $area_id = $('#dropdownMenu2').attr('tag');
-            var $property_type_id = $('#dropdownMenu3').attr('tag');
-            var $sale_status = $('#dropdownMenu4').attr('tag');
-            var $jiju = $('input:checkbox[name=jiju]:checked');
-            $jiju = getCheckBoxStr($jiju);
-            var $min_square = $('input[name=min_square]').val().trim();
-            var $max_square = $('input[name=max_square]').val().trim();
-            var $lon = $('input[name=lon]').val().trim();
-            var $lat = $('input[name=lat]').val().trim();
-            var $developers = $('input[name=developers]').val().trim();
-            var $property_company = $('input[name=property_company]').val().trim();
-            var $banner_img = $('input[name=banner_img_url]').val().trim();
-            var $img = $('input[name=loupan_img_url]').val().trim();
-            var $img_1 = $('input[name=img_1_url]').val().trim();
-            var $img_2 = $('input[name=img_2_url]').val().trim();
-            var $img_3 = $('input[name=img_3_url]').val().trim();
-            var $img_4 = $('input[name=img_4_url]').val().trim();
-            var $img_5 = $('input[name=img_5_url]').val().trim();
-            var $right_time = $('input[name=right_time]').val().trim();
-            var $tag = $('input:checkbox[name=tag]:checked');
-            $tag = getCheckBoxStr($tag);
             var $recommend = $('input:checkbox[name=recommend]');
             if ($recommend[0].checked) {
                 $recommend = 1;
             } else {
                 $recommend = 0;
             }
-            var $remark = $('input[name=remark]').val().trim();
+            var $lon = $('input[name=lon]').val().trim();
+            var $lat = $('input[name=lat]').val().trim();
+            var $sale_time = $('input[name=sale_time]').val().trim();
+            var $last_sale_time = $('input[name=last_sale_time]').val().trim();
+            var $deed_year = $('#dropdownMenu1').attr('tag');
+            var $is_only = $('input:checkbox[name=is_only]');
+            if ($is_only[0].checked) {
+                $is_only = 1;
+            } else {
+                $is_only = 0;
+            }
+            var $mortgage_info = $('input[name=mortgage_info]').val().trim();
+            var $right_info = $('input[name=right_info]').val().trim();
+            var $community_name = $('input[name=community_name]').val().trim();
+            var $community_introduction = $('input[name=community_introduction]').val().trim();
+            var $door_model_introduction = $('input[name=door_model_introduction]').val().trim();
+            var $school_info = $('input[name=school_info]').val().trim();
+            var $traffic_info = $('input[name=traffic_info]').val().trim();
+            var $community_average_price = $('input[name=community_average_price]').val().trim();
+            var $build_year = $('input[name=build_year]').val().trim();
+            var $total_building = $('input[name=total_building]').val().trim();
+            var $total_door_model = $('input[name=total_door_model]').val().trim();
+            var $build_type = $('#dropdownMenu2').attr('tag');
             var $id = $('input[name=id]').val().trim();
-            if (!checkVal($name, '名称', true, 0, 30)) {
-                return;
-            }
-            if (!checkVal($average_price, '均价', true)) {
-                return;
-            }
-            if (!checkVal($address, '项目地址', true, 0, 50)) {
-                return;
-            }
-            if (!checkVal($sale_office_address, '售楼处地址', true, 0, 50)) {
-                return;
-            }
-            if (!checkVal($opening_time, '开盘时间', true)) {
-                return;
-            }
-            if ($area_id == 0) {
-                alert('请选择片区！');
-                return;
-            }
-            if ($property_type_id == 0) {
-                alert('请选择物业类型！');
-                return;
-            }
-            if ($sale_status == 0) {
-                alert('请选择售卖状态！');
-                return;
-            }
-            if (!checkVal($jiju, '居室情况', true)) {
-                return;
-            }
-            if ($min_square == 0) {
-                alert('请填写最小面积！');
-                return;
-            }
-            if ($max_square == 0) {
-                alert('请填写最大面积！');
-                return;
-            }
+            var $house_img = $('input[name=house_img_url]').val().trim();
             if ($lon == 0 || $lat == 0) {
                 alert('请选择经纬度！');
                 return;
             }
-            if (!checkVal($developers, '开发商', true, 0, 50)) {
+            if (!checkVal($sale_time, '挂牌时间', true)) {
                 return;
             }
-            if (!checkVal($property_company, '物业公司', true, 0, 50)) {
+            if (!checkVal($last_sale_time, '上次交易时间', true)) {
                 return;
             }
-            if (!checkVal($banner_img, 'banner图', true)) {
+            if ($deed_year == 0) {
+                alert('请选择房本年限！');
                 return;
             }
-            if (!checkVal($img, '楼盘图片', true)) {
+            if (!checkVal($mortgage_info, '抵押信息', true, 0, 20)) {
                 return;
             }
-            if (!checkVal($img_1, '效果图1', true)) {
+            if (!checkVal($right_info, '产权所属', true, 0, 10)) {
                 return;
             }
-            if (!checkVal($img_2, '效果图2', true)) {
+            if (!checkVal($community_name, '小区名称', true)) {
                 return;
             }
-            if (!checkVal($img_3, '效果图3', true)) {
+            if (!checkVal($house_img, '小区图片', true)) {
                 return;
             }
-            if (!checkVal($img_4, '效果图4', true)) {
+            if (!checkVal($community_introduction, '小区简介', true, 0, 200)) {
                 return;
             }
-            if ($right_time == 0) {
-                alert('请填写产权年限！');
+            if (!checkVal($door_model_introduction, '户型简介', true, 0, 200)) {
                 return;
             }
-            if (!checkVal($tag, '楼盘特色', true)) {
+            if (!checkVal($school_info, '教育配套', true, 0, 200)) {
                 return;
             }
-            if (!checkVal($remark, '备注', false, 0, 15)) {
+            if (!checkVal($traffic_info, '交通出行', true, 0, 200)) {
+                return;
+            }
+            if (!checkVal($community_average_price, '小区均价', true)) {
+                return;
+            }
+            if (!checkVal($build_year, '建筑年代', true)) {
+                return;
+            }
+            if (!checkVal($total_building, '楼栋总数', true)) {
+                return;
+            }
+            if (!checkVal($total_door_model, '户型总数', true)) {
+                return;
+            }
+            if ($build_type == 0) {
+                alert('请选择建筑类型！');
                 return;
             }
             $.ajax({
-                url: '/admin/loupan/edit',
+                url: '/admin/house/edit',
                 type: 'post',
                 dataType: 'json',
                 data: {
                     id: $id,
-                    name: $name,
-                    average_price: $average_price,
-                    address: $address,
-                    sale_office_address: $sale_office_address,
-                    opening_time: $opening_time,
-                    area_id: $area_id,
-                    property_type_id: $property_type_id,
-                    sale_status: $sale_status,
-                    jiju: $jiju,
-                    min_square: $min_square,
-                    max_square: $max_square,
+                    build_type: $build_type,
+                    total_door_model: $total_door_model,
+                    total_building: $total_building,
+                    build_year: $build_year,
+                    community_average_price: $community_average_price,
+                    traffic_info: $traffic_info,
+                    school_info: $school_info,
+                    door_model_introduction: $door_model_introduction,
+                    community_introduction: $community_introduction,
+                    community_img: $house_img,
+                    community_name: $community_name,
                     lon: $lon,
                     lat: $lat,
-                    developers: $developers,
-                    property_company: $property_company,
-                    banner_img: $banner_img,
-                    img: $img,
-                    img_1: $img_1,
-                    img_2: $img_2,
-                    img_3: $img_3,
-                    img_4: $img_4,
-                    right_time: $right_time,
-                    tag: $tag,
-                    recommend: $recommend,
-                    remark: $remark
+                    right_info: $right_info,
+                    mortgage_info: $mortgage_info,
+                    deed_year: $deed_year,
+                    last_sale_time: $last_sale_time,
+                    sale_time: $sale_time,
+                    is_only: $is_only,
+                    recommend: $recommend
                 },
                 success: function (res) {
                     if (res.status == 1) {

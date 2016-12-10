@@ -9,6 +9,7 @@
 namespace app\manager;
 
 use app\components\Utils;
+use app\consts\HouseConst;
 use app\rpc\HouseRpc;
 
 class HouseManager
@@ -24,6 +25,9 @@ class HouseManager
     {
         $res = $this->house_rpc->getOne($id);
         if (isset($res->id)) {
+            if (!empty($res->house_attach)) {
+                $res->house_attach->deed_year_name = HouseConst::$deed_year[$res->house_attach->deed_year];
+            }
             return $res;
         } else {
             return null;
