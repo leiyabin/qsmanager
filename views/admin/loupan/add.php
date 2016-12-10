@@ -496,6 +496,7 @@ use yii\widgets\ActiveForm;
                         img_2: $img_2,
                         img_3: $img_3,
                         img_4: $img_4,
+                        img_5: $img_5,
                         right_time: $right_time,
                         tag: $tag,
                         recommend: $recommend,

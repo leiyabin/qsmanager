@@ -277,7 +277,7 @@ use app\consts\HouseConst;
             </label>
             <div class="col-sm-6">
                 <input type="text" class="form-control"
-                       name="mortgage_info" <?= Utils::getValue($house->house_attach, 'mortgage_info', '') ?>>
+                       name="mortgage_info" value="<?= Utils::getValue($house->house_attach, 'mortgage_info', '') ?>">
             </div>
         </div>
         <div class="form-group">
@@ -286,7 +286,7 @@ use app\consts\HouseConst;
             </label>
             <div class="col-sm-6">
                 <input type="text" class="form-control"
-                       name="right_info" <?= Utils::getValue($house->house_attach, 'right_info', '') ?>>
+                       name="right_info" value="<?= Utils::getValue($house->house_attach, 'right_info', '') ?>">
             </div>
         </div>
         <div class="form-group">
@@ -295,7 +295,7 @@ use app\consts\HouseConst;
             </label>
             <div class="col-sm-6">
                 <input type="text" class="form-control"
-                       name="community_name" <?= Utils::getValue($house->house_attach, 'community_name', '') ?>>
+                       name="community_name" value="<?= Utils::getValue($house->house_attach, 'community_name', '') ?>">
             </div>
         </div>
         <div class="form-group">
@@ -304,13 +304,13 @@ use app\consts\HouseConst;
             </label>
             <div class="col-sm-6">
                 <label style="color: blue;display: block;">*请上传图片尺寸200*120（或是长:宽=5:3）的图片</label>
-                <input type="file" id="house_img" name="house_img" style="display:inline">
-                <input type="button" tag="house_img" value="上传" class="upload_file">
-                <input type="hidden" name="house_img_url"
-                       value="<?= Utils::getValue($house->house_attach, 'house_img', ''); ?>">
+                <input type="file" id="community_img" name="community_img" style="display:inline">
+                <input type="button" tag="community_img" value="上传" class="upload_file">
+                <input type="hidden" name="community_img_url"
+                       value="<?= Utils::getValue($house->house_attach, 'community_img', ''); ?>">
                 <?php
-                if (!empty($house->house_attach->house_img_url)) {
-                    echo '<a target="_blank" class="upload_res" href="' . $house->house_attach->house_img_url . '">点击查看</a>';
+                if (!empty($house->house_attach->community_img_url)) {
+                    echo '<a target="_blank" class="upload_res" href="' . $house->house_attach->community_img_url . '">点击查看</a>';
                 }
                 ?>
             </div>
@@ -321,7 +321,8 @@ use app\consts\HouseConst;
             </label>
             <div class="col-sm-6" style="width: 900px;">
                 <input type="text" class="form-control"
-                       name="community_introduction" <?= Utils::getValue($house->house_attach, 'community_introduction', '') ?>>
+                       name="community_introduction"
+                       value="<?= Utils::getValue($house->house_attach, 'community_introduction', '') ?>">
             </div>
         </div>
         <div class="form-group">
@@ -330,7 +331,8 @@ use app\consts\HouseConst;
             </label>
             <div class="col-sm-6" style="width: 900px;">
                 <input type="text" class="form-control"
-                       name="door_model_introduction" <?= Utils::getValue($house->house_attach, 'door_model_introduction', '') ?>>
+                       name="door_model_introduction"
+                       value="<?= Utils::getValue($house->house_attach, 'door_model_introduction', '') ?>">
             </div>
         </div>
         <div class="form-group">
@@ -339,7 +341,7 @@ use app\consts\HouseConst;
             </label>
             <div class="col-sm-6" style="width: 900px;">
                 <input type="text" class="form-control"
-                       name="school_info" <?= Utils::getValue($house->house_attach, 'school_info', '') ?>>
+                       name="school_info" value="<?= Utils::getValue($house->house_attach, 'school_info', '') ?>">
             </div>
         </div>
         <div class="form-group">
@@ -348,7 +350,16 @@ use app\consts\HouseConst;
             </label>
             <div class="col-sm-6" style="width: 900px;">
                 <input type="text" class="form-control"
-                       name="traffic_info" <?= Utils::getValue($house->house_attach, 'traffic_info', '') ?>>
+                       name="traffic_info" value="<?= Utils::getValue($house->house_attach, 'traffic_info', '') ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">费税解析
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6" style="width: 900px;">
+                <input type="text" class="form-control"
+                       name="tax_explain" value="<?= Utils::getValue($house->house_attach, 'tax_explain', '') ?>">
             </div>
         </div>
         <div class="form-group">
@@ -358,7 +369,7 @@ use app\consts\HouseConst;
             <div class="col-sm-6">
                 <input type="number" class="form-control" style="width: 480px; display: inline"
                        name="community_average_price"
-                    <?= Utils::getValue($house->house_attach, 'community_average_price', '') ?>>元
+                       value="<?= Utils::getValue($house->house_attach, 'community_average_price', '') ?>">元
             </div>
         </div>
         <div class="form-group">
@@ -367,7 +378,7 @@ use app\consts\HouseConst;
             </label>
             <div class="col-sm-6">
                 <input type="number" class="form-control" style="width: 480px; display: inline" name="build_year"
-                    <?= Utils::getValue($house->house_attach, 'build_year', '') ?>>年
+                       value="<?= Utils::getValue($house->house_attach, 'build_year', '') ?>">年
             </div>
         </div>
         <div class="form-group">
@@ -376,7 +387,7 @@ use app\consts\HouseConst;
             </label>
             <div class="col-sm-6">
                 <input type="number" class="form-control" style="width: 480px; display: inline" name="total_building"
-                    <?= Utils::getValue($house->house_attach, 'total_building', '') ?>>栋
+                       value="<?= Utils::getValue($house->house_attach, 'total_building', '') ?>">栋
             </div>
         </div>
         <div class="form-group">
@@ -385,7 +396,7 @@ use app\consts\HouseConst;
             </label>
             <div class="col-sm-6">
                 <input type="number" class="form-control" style="width: 480px; display: inline" name="total_door_model"
-                    <?= Utils::getValue($house->house_attach, 'total_door_model', '') ?>>个
+                       value="<?= Utils::getValue($house->house_attach, 'total_door_model', '') ?>">个
             </div>
         </div>
         <div class="form-group">
@@ -406,6 +417,20 @@ use app\consts\HouseConst;
                         </li>
                     <?php endforeach; ?>
                 </ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">楼盘特色
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <?php foreach (HouseConst::$feature as $key => $name): ?>
+                    <label>
+                        <input type="checkbox"
+                               value="<?= $key ?>" <?php if (in_array($key, $house->tag_arr)) echo 'checked' ?> <?= $name ?>
+                               name="tag"><?= $name ?>
+                    </label>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
@@ -444,13 +469,16 @@ use app\consts\HouseConst;
             var $door_model_introduction = $('input[name=door_model_introduction]').val().trim();
             var $school_info = $('input[name=school_info]').val().trim();
             var $traffic_info = $('input[name=traffic_info]').val().trim();
+            var $tax_explain = $('input[name=tax_explain]').val().trim();
             var $community_average_price = $('input[name=community_average_price]').val().trim();
             var $build_year = $('input[name=build_year]').val().trim();
             var $total_building = $('input[name=total_building]').val().trim();
             var $total_door_model = $('input[name=total_door_model]').val().trim();
             var $build_type = $('#dropdownMenu2').attr('tag');
             var $id = $('input[name=id]').val().trim();
-            var $house_img = $('input[name=house_img_url]').val().trim();
+            var $tag = $('input:checkbox[name=tag]:checked');
+            $tag = getCheckBoxStr($tag);
+            var $community_img = $('input[name=community_img_url]').val().trim();
             if ($lon == 0 || $lat == 0) {
                 alert('请选择经纬度！');
                 return;
@@ -474,13 +502,16 @@ use app\consts\HouseConst;
             if (!checkVal($community_name, '小区名称', true)) {
                 return;
             }
-            if (!checkVal($house_img, '小区图片', true)) {
+            if (!checkVal($community_img, '小区图片', true)) {
                 return;
             }
             if (!checkVal($community_introduction, '小区简介', true, 0, 200)) {
                 return;
             }
             if (!checkVal($door_model_introduction, '户型简介', true, 0, 200)) {
+                return;
+            }
+            if (!checkVal($tax_explain, '费税解析', true, 0, 200)) {
                 return;
             }
             if (!checkVal($school_info, '教育配套', true, 0, 200)) {
@@ -520,7 +551,8 @@ use app\consts\HouseConst;
                     school_info: $school_info,
                     door_model_introduction: $door_model_introduction,
                     community_introduction: $community_introduction,
-                    community_img: $house_img,
+                    tax_explain: $tax_explain,
+                    community_img: $community_img,
                     community_name: $community_name,
                     lon: $lon,
                     lat: $lat,
@@ -529,6 +561,7 @@ use app\consts\HouseConst;
                     deed_year: $deed_year,
                     last_sale_time: $last_sale_time,
                     sale_time: $sale_time,
+                    tag: $tag,
                     is_only: $is_only,
                     recommend: $recommend
                 },

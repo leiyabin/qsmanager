@@ -25,8 +25,12 @@ class HouseManager
     {
         $res = $this->house_rpc->getOne($id);
         if (isset($res->id)) {
+            $tag_arr = explode(',', $res->tag);
+            $res->tag_arr = $tag_arr;
             if (!empty($res->house_attach)) {
                 $res->house_attach->deed_year_name = HouseConst::$deed_year[$res->house_attach->deed_year];
+                $res->house_attach->build_type_name = HouseConst::$build_type[$res->house_attach->build_type];
+                $res->house_attach->community_img_url = Utils::getImgUrl($res->house_attach->community_img);
             }
             return $res;
         } else {

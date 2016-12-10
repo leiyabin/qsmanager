@@ -62,12 +62,12 @@ class HouseController extends LController
     {
         $id = $this->getRequestParam('id');
         if (empty($id)) {
-            return $this->render('add');
+            return $this->render('index');
         }
         if (!$this->is_post) {
             $house = $this->house_manager->get($id);
             if (empty($house)) {
-                return $this->render('add');
+                return $this->render('index');
             } else {
                 $data = ['house' => $house];
                 return $this->render('edit', $data);
@@ -99,11 +99,13 @@ class HouseController extends LController
             'last_sale_time'          => strtotime($this->params['last_sale_time']),
             'community_average_price' => $this->params['community_average_price'],
             'traffic_info'            => $this->params['traffic_info'],
+            'tax_explain'             => $this->params['tax_explain'],
             'school_info'             => $this->params['school_info'],
             'door_model_introduction' => $this->params['door_model_introduction'],
             'community_introduction'  => $this->params['community_introduction'],
             'lon'                     => $this->params['lon'],
             'lat'                     => $this->params['lat'],
+            'tag'                     => $this->params['tag'],
             'community_img'           => $this->params['community_img'],
             'community_name'          => $this->params['community_name'],
             'right_info'              => $this->params['right_info'],
@@ -147,6 +149,9 @@ class HouseController extends LController
         if (!Utils::validVal($this->getRequestParam('door_model_introduction'), true)) {
             return '请输入不大于200字户型简介！';
         }
+        if (!Utils::validVal($this->getRequestParam('tax_explain'), true)) {
+            return '请输入不大于200字费税解析！';
+        }
         if (!Utils::validVal($this->getRequestParam('community_introduction'), true)) {
             return '请输入不大于200字小区简介！';
         }
@@ -170,6 +175,9 @@ class HouseController extends LController
         }
         if (!Utils::validNum($this->getRequestParam('sale_time'), true)) {
             return '请选择上次挂牌时间！';
+        }
+        if (!Utils::validVal($this->getRequestParam('tag'), true, 0, 50)) {
+            return '请选择楼盘标签！';
         }
         $this->params['is_only'] = $this->getRequestParam('is_only', '');
         $this->params['recommend'] = $this->getRequestParam('recommend', 0);
