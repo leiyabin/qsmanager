@@ -38,8 +38,10 @@ class BrokerManager
     public function get($id)
     {
         $res = $this->broker_rpc->getOne($id);
-        if (!empty($res)) {
+        if (!empty($res->id)) {
             $res->img_url = Utils::getImgUrl($res->img);
+            $tag_arr = explode(',', $res->tag);
+            $res->tag_arr = $tag_arr;
         }
         return $res;
     }

@@ -167,7 +167,7 @@ class HouseController extends LController
         if (!Utils::validVal($this->getRequestParam('mortgage_info'), true)) {
             return '请输入不大于20字抵押信息！';
         }
-        if (!Utils::validNum($this->getRequestParam('deed_year'), true, 0, 30)) {
+        if (!Utils::validNum($this->getRequestParam('deed_year'), true)) {
             return '请输入正确的房本年限！';
         }
         if (!Utils::validNum($this->getRequestParam('last_sale_time'), true)) {
@@ -176,7 +176,7 @@ class HouseController extends LController
         if (!Utils::validNum($this->getRequestParam('sale_time'), true)) {
             return '请选择上次挂牌时间！';
         }
-        if (!Utils::validVal($this->getRequestParam('tag'), true, 0, 50)) {
+        if (!Utils::validVal($this->getRequestParam('tag'), true, 0, 10)) {
             return '请选择楼盘标签！';
         }
         $this->params['is_only'] = $this->getRequestParam('is_only', '');

@@ -5,6 +5,7 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  */
 use yii\helpers\Html;
+use app\consts\HouseConst;
 
 ?>
 
@@ -12,6 +13,7 @@ use yii\helpers\Html;
 <script charset="utf-8" src="/static/admin/js/upload.js"></script>
 <script charset="utf-8" src="/static/admin/js/dropdown.js"></script>
 <script charset="utf-8" src="/static/admin/js/form.check.js"></script>
+<script charset="utf-8" src="/static/admin/js/checkbox.js"></script>
 <?php $this->beginBlock('breadcrumb');//面包屑导航 ?>
 <div class="pageheader" style="height: 50px;padding-top: 10px">
     <h2><span style="font-style: normal">经纪人</span>
@@ -28,6 +30,8 @@ use yii\helpers\Html;
             var $phone = $('input[name=phone]').val().trim();
             var $img = $('input[name=broker_img_url]').val().trim();
             var $email = $('input[name=email]').val().trim();
+            var $tag = $('input:checkbox[name=tag]:checked');
+            $tag = getCheckBoxStr($tag);
             var $class_id = $('#dropdownMenu1').attr('tag');
             var $id = $('input[name=id]').val();
             if (!checkVal($name, '姓名', true, 0, 10)) {
@@ -48,6 +52,7 @@ use yii\helpers\Html;
                     img: $img,
                     email: $email,
                     phone: $phone,
+                    tag: $tag,
                     position_id: $class_id,
                     id: $id
                 },
@@ -117,6 +122,20 @@ use yii\helpers\Html;
                     echo '<a target="_blank" class="upload_res" href="' . $broker->img_url . '">点击查看</a>';
                 }
                 ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 10%">标签
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <?php foreach (HouseConst::$broker_type as $key => $name): ?>
+                    <label>
+                        <input type="checkbox" <?php if (in_array($key, $broker->tag_arr)) echo 'checked' ?>
+                               value="<?= $key ?>"
+                               name="tag"><?= $name ?>
+                    </label>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="form-group">

@@ -83,6 +83,9 @@ class BrokerController extends LController
             if (!Utils::validVal($this->getRequestParam('phone'), true, 0, 20)) {
                 return $this->error('请输入不大于20字的联系方式！');
             }
+            if (!Utils::validVal($this->getRequestParam('tag'), true, 0, 20)) {
+                return '请选择经纪人标签！';
+            }
             $email = $this->getRequestParam('email');
             $img = $this->getRequestParam('img');
             $broker = [
@@ -90,6 +93,7 @@ class BrokerController extends LController
                 'name'        => $this->params['name'],
                 'phone'       => $this->params['phone'],
                 'img'         => $img,
+                'tag'         => $this->params['tag'],
                 'email'       => $email,
             ];
             $res = $this->broker_manager->add($broker);
@@ -131,12 +135,16 @@ class BrokerController extends LController
             if (!Utils::validVal($this->getRequestParam('phone'), true, 0, 20)) {
                 return $this->error('请输入不大于20字的联系方式！');
             }
+            if (!Utils::validVal($this->getRequestParam('tag'), true, 0, 20)) {
+                return '请选择经纪人标签！';
+            }
             $email = $this->getRequestParam('email');
             $img = $this->getRequestParam('img');
             $broker = [
                 'position_id' => $this->params['position_id'],
                 'name'        => $this->params['name'],
                 'img'         => $img,
+                'tag'         => $this->params['tag'],
                 'email'       => $email,
                 'phone'       => $this->params['phone'],
                 'id'          => $id,

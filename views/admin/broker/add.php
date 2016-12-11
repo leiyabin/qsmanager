@@ -6,6 +6,7 @@
  */
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\consts\HouseConst;
 
 ?>
 
@@ -13,7 +14,7 @@ use yii\widgets\ActiveForm;
     <script charset="utf-8" src="/static/admin/js/upload.js"></script>
     <script charset="utf-8" src="/static/admin/js/form.check.js"></script>
     <script charset="utf-8" src="/static/admin/js/dropdown.js"></script>
-
+    <script charset="utf-8" src="/static/admin/js/checkbox.js"></script>
 <?php $this->beginBlock('breadcrumb');//面包屑导航 ?>
     <div class="pageheader" style="height: 50px;padding-top: 10px">
         <h2><span style="font-style: normal">经纪人</span>
@@ -60,12 +61,27 @@ use yii\widgets\ActiveForm;
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label" style="width: 10%">照片
+                    <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
                     <label style="color: red;display: block;">*上传图片尺寸78*98</label>
                     <input type="file" id="broker_img" name="broker_img" style="display:inline">
                     <input type="button" tag="broker_img" value="上传" class="upload_file">
                     <input type="hidden" name="broker_img_url">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" style="width: 10%">标签
+                    <fond style="color: red">*</fond>
+                </label>
+                <div class="col-sm-6">
+                    <?php foreach (HouseConst::$broker_type as $key => $name): ?>
+                        <label>
+                            <input type="checkbox"
+                                   value="<?= $key ?>"
+                                   name="tag"><?= $name ?>
+                        </label>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="form-group">
@@ -92,6 +108,8 @@ use yii\widgets\ActiveForm;
                 var $phone = $('input[name=phone]').val().trim();
                 var $img = $('input[name=broker_img_url]').val().trim();
                 var $email = $('input[name=email]').val().trim();
+                var $tag = $('input:checkbox[name=tag]:checked');
+                $tag = getCheckBoxStr($tag);
                 var $class_id = $('#dropdownMenu1').attr('tag');
                 if (!checkVal($name, '姓名', true, 0, 10)) {
                     return;
@@ -110,6 +128,7 @@ use yii\widgets\ActiveForm;
                         name: $name,
                         img: $img,
                         email: $email,
+                        tag: $tag,
                         phone: $phone,
                         position_id: $class_id
                     },
