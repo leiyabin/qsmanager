@@ -114,7 +114,6 @@ use yii\helpers\Url;
                     <th><?= \app\components\Utils::formatDateTime($item->c_t); ?></th>
                     <th>
                         <a href="<?= Url::to(['edit', 'id' => $item->id]); ?>"><i class="fa fa-pencil"></i></a>
-                        <i class="fa fa-trash-o" style="margin-left: 10px;cursor: pointer" tag="<?= $item->id ?>"></i>
                     </th>
                 </tr>
             <?php endforeach; ?>

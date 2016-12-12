@@ -43,8 +43,8 @@ use yii\helpers\Url;
 
         <div class="leftpanel">
 
-            <div class="logopanel" style="text-align: center;height: 50px;line-height: 34px">
-                <span style="font-size: medium">千氏地产网站管理后台</span>
+            <div class="logopanel" style="text-align: center;height: 50px;line-height: 34px;
+            background-image:url('/static/admin/images/logo.png') ;background-repeat: no-repeat ;background-position:center  ">
             </div><!-- LOGO -->
 
             <div class="leftpanelinner">
@@ -90,7 +90,7 @@ use yii\helpers\Url;
                     </li>
                     <li class="nav-parent"><a href=""><i class="fa fa-edit"></i> <span>配置信息设置</span></a>
                         <ul class="children">
-                            <li><a href="/admin/config/class/"><i class="fa fa-caret-right"></i>分类列表</a></li>
+<!--                            <li><a href="/admin/config/class/"><i class="fa fa-caret-right"></i>分类列表</a></li>-->
                             <li><a href="/admin/config/info/"><i class="fa fa-caret-right"></i>配置列表</a></li>
                             <li><a href="/admin/area/index/"><i class="fa fa-caret-right"></i>片区管理</a></li>
                         </ul>
