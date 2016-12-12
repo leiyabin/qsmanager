@@ -81,7 +81,7 @@ class AdminController extends LController
 
     public function actionSetpwd()
     {
-        $id = $this->user_info['id'];
+        $id = $this->user_info->id;
         if (!$this->is_post) {
             return $this->render('setpwd');
         } else {
