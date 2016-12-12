@@ -36,18 +36,18 @@ use yii\helpers\Url;
         <?php $this->head() ?>
     </head>
 
-    <body style="overflow: visible;">
+    <body style="overflow: visible;background-color:#505f7a">
     <?php $this->beginBody() ?>
 
     <section>
 
         <div class="leftpanel">
 
-            <div class="logopanel" style="text-align: center;height: 50px;line-height: 34px;
-            background-image:url('/static/admin/images/logo.png') ;background-repeat: no-repeat ;background-position:center  ">
+            <div class="logopanel" style="text-align: center;height: 50px;line-height: 34px;">
+                <span style="font-size: large ;font-weight: bold;">千氏地产网站管理后台</span>
             </div><!-- LOGO -->
 
-            <div class="leftpanelinner">
+            <div class="leftpanelinner" style="font-weight: bold;">
                 <h5 class="sidebartitle">导航</h5>
                 <ul class="nav nav-pills nav-stacked nav-bracket" id="sidemenus">
                     <li><a href="<?= Url::toRoute('/admin/index'); ?>"><i class="fa fa-home"></i> <span>后台首页</span></a>
@@ -90,7 +90,7 @@ use yii\helpers\Url;
                     </li>
                     <li class="nav-parent"><a href=""><i class="fa fa-edit"></i> <span>配置信息设置</span></a>
                         <ul class="children">
-<!--                            <li><a href="/admin/config/class/"><i class="fa fa-caret-right"></i>分类列表</a></li>-->
+                            <!--                            <li><a href="/admin/config/class/"><i class="fa fa-caret-right"></i>分类列表</a></li>-->
                             <li><a href="/admin/config/info/"><i class="fa fa-caret-right"></i>配置列表</a></li>
                             <li><a href="/admin/area/index/"><i class="fa fa-caret-right"></i>片区管理</a></li>
                         </ul>
@@ -111,7 +111,8 @@ use yii\helpers\Url;
                                     管理员
                                     <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-usermenu pull-right" style="min-width: 100px; ">
+                                <ul class="dropdown-menu dropdown-menu-usermenu pull-right"
+                                    style="min-width: 100px; ">
                                     <li style="width:100px"><a href="<?= Url::to(['admin/admin/setpwd']); ?>"><i
                                                 class="glyphicon glyphicon-cog"></i>修改密码</a></li>
                                     <li style="width:100px"><a href="<?= Url::toRoute(['admin/auth/logout']); ?>"><i
