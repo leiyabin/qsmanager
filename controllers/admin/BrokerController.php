@@ -84,7 +84,7 @@ class BrokerController extends LController
                 return $this->error('请输入不大于20字的联系方式！');
             }
             if (!Utils::validVal($this->getRequestParam('tag'), true, 0, 20)) {
-                return '请选择经纪人标签！';
+                return $this->error('请选择经纪人标签！');
             }
             $email = $this->getRequestParam('email');
             $img = $this->getRequestParam('img');
@@ -136,7 +136,7 @@ class BrokerController extends LController
                 return $this->error('请输入不大于20字的联系方式！');
             }
             if (!Utils::validVal($this->getRequestParam('tag'), true, 0, 20)) {
-                return '请选择经纪人标签！';
+                return $this->error('请选择经纪人标签！');
             }
             $email = $this->getRequestParam('email');
             $img = $this->getRequestParam('img');
