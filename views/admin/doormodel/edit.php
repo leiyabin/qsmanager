@@ -14,7 +14,7 @@ use yii\helpers\Html;
 <script charset="utf-8" src="/static/admin/js/dropdown.js"></script>
 <?php $this->beginBlock('breadcrumb');//面包屑导航 ?>
 <div class="pageheader" style="height: 50px;padding-top: 10px">
-    <h2><span style="font-style: normal">户型</span>
+    <h2><span style="font-style: normal">楼盘</span><span style="font-style: normal">户型</span>
         <span style="font-style: normal">修改</span></h2>
 </div>
 

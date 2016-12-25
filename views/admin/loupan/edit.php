@@ -44,7 +44,7 @@ use yii\helpers\Html;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" name="loupan_name" class="form-control" value="<?= $loupan->name ?>">
+                <input type="text" name="loupan_name" placeholder="请输入30个字以内" class="form-control" value="<?= $loupan->name ?>">
             </div>
         </div>
         <div class="form-group">
@@ -61,7 +61,7 @@ use yii\helpers\Html;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" name="address" class="form-control" value="<?= $loupan->address ?>">
+                <input type="text" name="address" placeholder="请输入50个字以内" class="form-control" value="<?= $loupan->address ?>">
             </div>
         </div>
         <div class="form-group">
@@ -69,7 +69,7 @@ use yii\helpers\Html;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" name="sale_office_address" class="form-control"
+                <input type="text" name="sale_office_address" placeholder="请输入50个字以内" class="form-control"
                        value="<?= $loupan->sale_office_address ?>">
             </div>
         </div>
@@ -97,7 +97,7 @@ use yii\helpers\Html;
                 <ul style="margin-left: 10px;" class="dropdown-menu" role="menu">
                     <?php foreach ($list as $item): ?>
                         <li class="li_on_click quxian" role="presentation" tag="<?= $item->id; ?>">
-                            <a role="menuitem" tabindex="-1" href="#"><?= $item->value; ?></a>
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0);"><?= $item->value; ?></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
@@ -127,7 +127,7 @@ use yii\helpers\Html;
                 <ul style="margin-left: 10px" class="dropdown-menu" role="menu">
                     <?php foreach (\app\consts\HouseConst::$property_type as $key => $name): ?>
                         <li class="li_on_click" role="presentation" tag="<?= $key ?>">
-                            <a role="menuitem" tabindex="-1" href="#"><?= $name ?></a>
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0);"><?= $name ?></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
@@ -145,7 +145,7 @@ use yii\helpers\Html;
                 <ul style="margin-left: 10px" class="dropdown-menu" role="menu">
                     <?php foreach (\app\consts\HouseConst::$sale_status as $key => $name): ?>
                         <li class="li_on_click" role="presentation" tag="<?= $key ?>">
-                            <a role="menuitem" tabindex="-1" href="#"><?= $name ?></a>
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0);"><?= $name ?></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
@@ -363,10 +363,10 @@ use yii\helpers\Html;
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">户型解读
+            <label class="col-sm-3 control-label" style="width: 12%">备注
             </label>
             <div class="col-sm-6">
-                <input type="text" name="remark" class="form-control" value="<?= $loupan->remark ?>">
+                <input type="text" name="remark" placeholder="请输入15个字以内" class="form-control" value="<?= $loupan->remark ?>">
             </div>
         </div>
     </div>
@@ -397,7 +397,7 @@ use yii\helpers\Html;
                         $ul.siblings('button').html('请选择片区').attr('tag', 0);
                         for (var j in res.data) {
                             $('<li class="li_on_click" onclick="li_on_click_fun($(this))" role="presentation" tag="' + res.data[j].id + '">' +
-                                '<a role="menuitem" tabindex="-1" href="#">' + res.data[j].name + '</a></li>').appendTo($ul);
+                                '<a role="menuitem" tabindex="-1" href="javascript:void(0);">' + res.data[j].name + '</a></li>').appendTo($ul);
                         }
                     } else {
                         alert(res.msg);

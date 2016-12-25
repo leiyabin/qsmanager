@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
     <script charset="utf-8" src="/static/admin/js/dropdown.js"></script>
 <?php $this->beginBlock('breadcrumb');//面包屑导航 ?>
     <div class="pageheader" style="height: 50px;padding-top: 10px">
-        <h2><span style="font-style: normal">楼盘</span>
+        <h2><span style="font-style: normal">楼盘</span><span style="font-style: normal">户型</span>
             <span style="font-style: normal">添加</span></h2>
     </div>
 <?php $this->endBlock(); ?>
@@ -34,7 +34,7 @@ use yii\widgets\ActiveForm;
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
-                    <input type="text" name="face" class="form-control">
+                    <input type="text" placeholder="请输入10个字以内" name="face" class="form-control">
                 </div>
             </div>
             <div class="form-group">
@@ -42,7 +42,7 @@ use yii\widgets\ActiveForm;
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
-                    <input type="text" name="shitinwei" class="form-control">
+                    <input type="text" placeholder="请输入10个字以内（例:几室几厅几卫）" name="shitinwei" class="form-control">
                 </div>
             </div>
             <div class="form-group">
@@ -82,7 +82,7 @@ use yii\widgets\ActiveForm;
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
-                    <input type="text" name="tag_1" class="form-control">
+                    <input type="text" placeholder="请输入10个字以内（例:户型方正）" name="tag_1" class="form-control">
                 </div>
             </div>
             <div class="form-group">
@@ -90,7 +90,7 @@ use yii\widgets\ActiveForm;
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
-                    <input type="text" name="tag_2" class="form-control">
+                    <input type="text" placeholder="请输入10个字以内（例:厨卫不对门）" name="tag_2" class="form-control">
                 </div>
             </div>
             <div class="form-group">
@@ -98,11 +98,12 @@ use yii\widgets\ActiveForm;
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
-                    <input type="text" name="tag_3" class="form-control">
+                    <input type="text" placeholder="请输入10个字以内（例:南北通透）" name="tag_3" class="form-control">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label" style="width: 12%">描述
+                    <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
                     <input type="text" name="description" class="form-control">

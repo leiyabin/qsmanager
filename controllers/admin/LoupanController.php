@@ -10,7 +10,9 @@ namespace app\controllers\admin;
 
 use app\components\LController;
 use app\components\Utils;
+use app\consts\ErrorCode;
 use app\consts\HouseConst;
+use app\exception\ResponseException;
 use yii\data\Pagination;
 use app\manager\LoupanManager;
 use app\manager\ConfigManager;
@@ -93,12 +95,12 @@ class LoupanController extends LController
     {
         $id = $this->getRequestParam('id');
         if (empty($id)) {
-            return $this->render('add');
+            throw new ResponseException('not found', ErrorCode::NOT_FOUND);
         }
         if (!$this->is_post) {
             $loupan = $this->loupan_manager->get($id);
             if (empty($loupan)) {
-                return $this->render('add');
+                throw new ResponseException('not found', ErrorCode::NOT_FOUND);
             } else {
                 $class_list = [];
                 $class_page_info = ['page' => 1, 'pre_page' => 9999];

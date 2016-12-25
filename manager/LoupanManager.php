@@ -39,7 +39,7 @@ class LoupanManager
     public function get($id)
     {
         $res = $this->loupan_rpc->getOne($id);
-        if (!empty($res)) {
+        if (isset($res->id)) {
             $res->img_url = Utils::getImgUrl($res->img);
             $res->banner_img_url = Utils::getImgUrl($res->banner_img);
             $res->img_1_url = Utils::getImgUrl($res->img_1);
@@ -51,8 +51,9 @@ class LoupanManager
             $res->jiju_arr = $jiju_arr;
             $tag_arr = explode(',', $res->tag);
             $res->tag_arr = $tag_arr;
+            return $res;
         }
-        return $res;
+        return [];
     }
 
     public function getSimple($id)

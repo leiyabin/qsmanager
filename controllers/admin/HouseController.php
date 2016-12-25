@@ -67,7 +67,7 @@ class HouseController extends LController
         if (!$this->is_post) {
             $house = $this->house_manager->get($id);
             if (empty($house)) {
-                return $this->render('index');
+                $this->redirect(['/admin/house/index']);
             } else {
                 $data = ['house' => $house];
                 return $this->render('edit', $data);
