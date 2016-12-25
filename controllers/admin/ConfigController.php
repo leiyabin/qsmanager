@@ -95,7 +95,6 @@ class ConfigController extends LController
     public function actionInfo()
     {
         $info_list = [];
-        $class_list = [];
         $pages = new Pagination(['totalCount' => 0, 'defaultPageSize' => $this->page_size]);
         $class_id = $this->getRequestParam('class_id', 0);
         $value = $this->getRequestParam('value', '');
@@ -106,13 +105,8 @@ class ConfigController extends LController
             $pages = new Pagination(['totalCount' => $res->total, 'defaultPageSize' => $res->per_page]);
             $info_list = $res->value_list;
         }
-        $res = $this->config_manager->getClassList(1, 9999);
-        if (!$this->hasError($res)) {
-            $class_list = $res->class_list;
-        }
         return $this->render('info', [
             'info_list'  => $info_list,
-            'class_list' => $class_list,
             'pages'      => $pages,
             'class_id'   => $class_id,
             'value'      => $value
@@ -122,15 +116,7 @@ class ConfigController extends LController
     public function actionAddinfo()
     {
         if (!$this->is_post) {
-            $res = $this->config_manager->getClassList(1, 9999);
-            if ($this->hasError($res)) {
-                $list = [];
-            } else {
-                $list = $res->class_list;
-            }
-            return $this->render('addinfo', [
-                'list' => $list,
-            ]);
+            return $this->render('addinfo');
         } else {
             if (!Utils::validVal($this->getRequestParam('value'), true, 0, 50)) {
                 return $this->error('请输入不大于50位的信息名称！');
@@ -163,12 +149,7 @@ class ConfigController extends LController
             if (empty($info)) {
                 return $this->render('addinfo');
             } else {
-                $class_list = [];
-                $res = $this->config_manager->getClassList(1, 9999);
-                if (!$this->hasError($res)) {
-                    $class_list = $res->class_list;
-                }
-                $data = ['class_list' => $class_list, 'info' => $info];
+                $data = ['info' => $info];
                 return $this->render('editinfo', $data);
             }
         } else {

@@ -29,7 +29,7 @@ use app\consts\HouseConst;
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
-                    <input type="text" name="broker_name" class="form-control">
+                    <input type="text" placeholder="输入10个字以内" name="broker_name" class="form-control">
                 </div>
             </div>
             <div class="form-group">
@@ -61,6 +61,7 @@ use app\consts\HouseConst;
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label" style="width: 10%">照片
+                    <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
                     <label style="color: red;display: block;">*上传图片尺寸78*98</label>

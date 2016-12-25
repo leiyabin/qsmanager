@@ -65,21 +65,21 @@ use yii\helpers\Html;
         <div class="form-group">
             <label class="col-sm-3 control-label">用户名<fond style="color: red">*</fond></label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" name="username" value="<?= $model->username; ?>"
+                <input type="text" placeholder="小于20个字符" disabled class="form-control" name="username" value="<?= $model->username; ?>"
                        required>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">密码</label>
             <div class="col-sm-6">
-                <input type="password" class="form-control" name="password" value="">
-                <p class="help-block">留空则密码保持不变</p>
+                <input type="password" placeholder="大于六位字符" class="form-control" name="password" value="">
+                <p class="help-block" style="color: red">留空则密码保持不变</p>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">姓名<fond style="color: red">*</fond></label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" name="name" value="<?= $model->name; ?>" required>
+                <input type="text" placeholder="小于20个字符" class="form-control" name="name" value="<?= $model->name; ?>" required>
             </div>
         </div>
         <div class="form-group">

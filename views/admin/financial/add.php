@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
-                    <input type="text" name="title" class="form-control">
+                    <input type="text" placeholder="输入30个字以内" name="title" class="form-control">
                 </div>
             </div>
             <div class="form-group">

@@ -55,7 +55,9 @@ use yii\helpers\Url;
         }
         location.href = url;
     });
-
+    $("#reset_button").click(function () {
+        location.href = '/admin/area/index';
+    })
 </script>
 <?php $this->endBlock(); ?>
 <div class="panel panel-default">
@@ -86,7 +88,9 @@ use yii\helpers\Url;
                                value="<?= $name ?>"
                                placeholder="请输入区县名称">
                     </div>
-                    <button type="submit" id="search_button" class="btn btn-default">搜索</button>
+                    <button type="submit" id="search_button" class="btn btn-success">搜索</button>
+                    &nbsp;&nbsp;
+                    <button type="submit" id="reset_button" class="btn btn-info">重置</button>
                 </div>
             </div>
         </div>
@@ -122,6 +126,5 @@ use yii\helpers\Url;
         <div>
             <?= \yii\widgets\LinkPager::widget(['pagination' => $pages]); ?>
         </div>
-        <button class="btn btn-primary btn-sm" id="batchDel">批量删除</button>
     </div>
 </div>

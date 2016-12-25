@@ -34,13 +34,16 @@ use yii\helpers\Url;
         }
         location.href = url;
     });
+    $("#reset_button").click(function () {
+        location.href = '/admin/config/info';
+    })
 </script>
 <?php $this->endBlock(); ?>
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="toolbar">
             <a href="<?= Url::to(['addinfo']); ?>" class="btn btn-primary btn-sm"><i
-                    class="glyphicon glyphicon-plus"></i>
+                        class="glyphicon glyphicon-plus"></i>
                 新增</a>
             <div style="display: inline-block;margin-left:15px;">
                 <div class="form-inline">
@@ -48,23 +51,30 @@ use yii\helpers\Url;
                         <div class="col-sm-6 dropdown">
                             <button style="width: 200px; height: 40px" class="btn btn-default dropdown-toggle"
                                     type="button"
-                                    tag="<?= $class_id?>"
+                                    tag="<?= $class_id ?>"
                                     id="dropdownMenu1"
                                     data-toggle="dropdown">
                                 请选择分类
                             </button>
                             <ul style="margin-left: 10px;" class="dropdown-menu" role="menu">
-                                <?php foreach ($class_list as $item): ?>
-                                    <li class="li_on_click" role="presentation" tag="<?= $item->id; ?>">
-                                        <a role="menuitem" tabindex="-1" href="#"><?= $item->name; ?></a>
-                                    </li>
-                                <?php endforeach; ?>
+                                <li class="li_on_click" role="presentation" tag="3">
+                                    <a role="menuitem" tabindex="-1" href="#">房产百科</a>
+                                </li>
+                                <li class="li_on_click" role="presentation" tag="4">
+                                    <a role="menuitem" tabindex="-1" href="#">经纪人职位</a>
+                                </li>
+                                <li class="li_on_click" role="presentation" tag="9">
+                                    <a role="menuitem" tabindex="-1" href="#">区县</a>
+                                </li>
                             </ul>
                         </div>
-                        <input style="margin-left: 32px" type="text" name="search" class="form-control" value="<?= $value ?>"
+                        <input style="margin-left: 32px" type="text" name="search" class="form-control"
+                               value="<?= $value ?>"
                                placeholder="请输入配置名称">
                     </div>
-                    <button type="submit" id="search_button" class="btn btn-default">搜索</button>
+                    <button type="submit" id="search_button" class="btn btn-success">搜索</button>
+                    &nbsp;&nbsp;
+                    <button type="submit" id="reset_button" class="btn btn-info">重置</button>
                 </div>
             </div>
         </div>

@@ -36,7 +36,7 @@ use yii\widgets\ActiveForm;
                             </li>
                         <?php endforeach; ?>
                     </ul>
-                    <fond style="color: red">注意：【配置管理】中添加区县</fond>
+                    <fond style="color: red">注意：【配置列表】中添加区县</fond>
                 </div>
             </div>
             <div class="form-group">
@@ -44,7 +44,7 @@ use yii\widgets\ActiveForm;
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
-                    <input type="text" name="area_name" class="form-control">
+                    <input type="text" placeholder="请输入30个字以内" name="area_name" class="form-control">
                 </div>
             </div>
 

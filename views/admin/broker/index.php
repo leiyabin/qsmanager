@@ -54,6 +54,9 @@ use yii\helpers\Url;
         }
         location.href = url;
     });
+    $("#reset_button").click(function () {
+        location.href = '/admin/broker/index';
+    })
 </script>
 <?php $this->endBlock(); ?>
 <div class="panel panel-default">
@@ -84,7 +87,8 @@ use yii\helpers\Url;
                                value="<?= $name ?>"
                                placeholder="请输入经纪人姓名">
                     </div>
-                    <button type="submit" id="search_button" class="btn btn-default">搜索</button>
+                    <button type="submit" id="search_button" class="btn btn-success">搜索</button>
+                    &nbsp;&nbsp;<button type="submit" id="reset_button" class="btn btn-info">重置</button>
                 </div>
             </div>
         </div>

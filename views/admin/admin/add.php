@@ -23,7 +23,7 @@ use yii\helpers\Html;
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
-                    <input type="text" name="username" class="form-control">
+                    <input type="text" placeholder="小于20个字符" name="username" class="form-control">
                 </div>
             </div>
             <div class="form-group">
@@ -31,7 +31,7 @@ use yii\helpers\Html;
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
-                    <input type="text" name="password" class="form-control" value="000000">
+                    <input type="text" placeholder="大于六位字符" name="password" class="form-control" value="000000">
                 </div>
             </div>
             <div class="form-group">
@@ -39,7 +39,7 @@ use yii\helpers\Html;
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" placeholder="小于20个字" name="name" class="form-control">
                 </div>
             </div>
             <div class="form-group">

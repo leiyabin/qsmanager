@@ -102,7 +102,7 @@ use yii\helpers\Html;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" name="area_name" class="form-control" value="<?= $area->name; ?>">
+                <input type="text" placeholder="请输入30个字以内" name="area_name" class="form-control" value="<?= $area->name; ?>">
             </div>
         </div>
     </div>

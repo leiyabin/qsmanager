@@ -120,7 +120,7 @@ use yii\helpers\Html;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" name="title" class="form-control" value="<?= $news->title; ?>">
+                <input type="text" name="title" placeholder="请输入50字以内" class="form-control" value="<?= $news->title; ?>">
             </div>
         </div>
         <div class="form-group">
@@ -154,7 +154,9 @@ use yii\helpers\Html;
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 10%">图片</label>
+            <label class="col-sm-3 control-label" style="width: 10%">图片
+                <fond style="color: red">*</fond>
+            </label>
             <div class="col-sm-6">
                 <label style="color: blue;display: block;">*请上传图片尺寸455X163（或是长:宽=5:2）的图片</label>
                 <input type="file" id="news_img" name="news_img" style="display:inline">

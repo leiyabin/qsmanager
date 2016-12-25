@@ -65,18 +65,22 @@ use yii\helpers\Html;
                     请选择分类
                 </button>
                 <ul style="margin-left: 10px" class="dropdown-menu" role="menu">
-                    <?php foreach ($class_list as $item): ?>
-                        <li class="li_on_click" role="presentation" tag="<?= $item->id; ?>">
-                            <a role="menuitem" tabindex="-1" href="#"><?= $item->name; ?></a>
-                        </li>
-                    <?php endforeach; ?>
+                    <li class="li_on_click" role="presentation" tag="3">
+                        <a role="menuitem" tabindex="-1" href="#">房产百科</a>
+                    </li>
+                    <li class="li_on_click" role="presentation" tag="4">
+                        <a role="menuitem" tabindex="-1" href="#">经纪人职位</a>
+                    </li>
+                    <li class="li_on_click" role="presentation" tag="9">
+                        <a role="menuitem" tabindex="-1" href="#">区县</a>
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">配置</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" name="value" value="<?= $info->value; ?>">
+                <input type="text" placeholder="请输入30个字以内" class="form-control" name="value" value="<?= $info->value; ?>">
             </div>
         </div>
     </div>

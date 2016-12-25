@@ -20,7 +20,6 @@ class IndexController extends LController
 
     public function actionIndex()
     {
-        $username = $this->user_info->username;
-        return $this->render('index', ['username' => $username]);
+        return $this->render('index');
     }
 }

@@ -73,7 +73,7 @@ use yii\helpers\Html;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" name="title" class="form-control" value="<?= $financial->title; ?>">
+                <input type="text" placeholder="输入30个字以内" name="title" class="form-control" value="<?= $financial->title; ?>">
             </div>
         </div>
         <div class="form-group">
