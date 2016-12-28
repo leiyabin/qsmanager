@@ -102,11 +102,11 @@ use yii\widgets\ActiveForm;
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label" style="width: 12%">描述
+                <label class="col-sm-3 control-label" style="width: 12%">户型解读
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
-                    <input type="text" name="description" class="form-control">
+                    <input type="text" placeholder="请输入50个字以内" name="description" class="form-control">
                 </div>
             </div>
         </div>

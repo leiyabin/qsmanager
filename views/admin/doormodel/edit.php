@@ -37,7 +37,7 @@ use yii\helpers\Html;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" name="face" class="form-control" value="<?= $door_model->face ?>">
+                <input type="text" placeholder="请输入10个字以内" name="face" class="form-control" value="<?= $door_model->face ?>">
             </div>
         </div>
         <div class="form-group">
@@ -45,7 +45,7 @@ use yii\helpers\Html;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" name="shitinwei" class="form-control" value="<?= $door_model->shitinwei ?>">
+                <input type="text" placeholder="请输入10个字以内（例:几室几厅几卫）" name="shitinwei" class="form-control" value="<?= $door_model->shitinwei ?>">
             </div>
         </div>
         <div class="form-group">
@@ -93,7 +93,7 @@ use yii\helpers\Html;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" name="tag_1" class="form-control" value="<?= $door_model->tag_1 ?>">
+                <input type="text" placeholder="请输入10个字以内（例:户型方正）" name="tag_1" class="form-control" value="<?= $door_model->tag_1 ?>">
             </div>
         </div>
         <div class="form-group">
@@ -101,7 +101,7 @@ use yii\helpers\Html;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" name="tag_2" class="form-control" value="<?= $door_model->tag_2 ?>">
+                <input type="text" placeholder="请输入10个字以内（例:厨卫不对门）" name="tag_2" class="form-control" value="<?= $door_model->tag_2 ?>">
             </div>
         </div>
         <div class="form-group">
@@ -109,14 +109,15 @@ use yii\helpers\Html;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" name="tag_3" class="form-control" value="<?= $door_model->tag_3 ?>">
+                <input type="text" placeholder="请输入10个字以内（例:南北通透）" name="tag_3" class="form-control" value="<?= $door_model->tag_3 ?>">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">描述
+            <label class="col-sm-3 control-label" style="width: 12%">户型解读
+                <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" name="description" class="form-control" value="<?= $door_model->description ?>">
+                <input type="text" placeholder="请输入50个字以内" name="description" class="form-control" value="<?= $door_model->description ?>">
             </div>
         </div>
     </div>
