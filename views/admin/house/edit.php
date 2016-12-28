@@ -276,7 +276,7 @@ use app\consts\HouseConst;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" class="form-control"
+                <input type="text" class="form-control" placeholder="请输入20个字以内"
                        name="mortgage_info" value="<?= Utils::getValue($house->house_attach, 'mortgage_info', '') ?>">
             </div>
         </div>
@@ -285,7 +285,7 @@ use app\consts\HouseConst;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" class="form-control"
+                <input type="text" class="form-control" placeholder="请输入10个字以内"
                        name="right_info" value="<?= Utils::getValue($house->house_attach, 'right_info', '') ?>">
             </div>
         </div>
@@ -294,7 +294,7 @@ use app\consts\HouseConst;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" class="form-control"
+                <input type="text" class="form-control" placeholder="请输入20个字以内"
                        name="community_name" value="<?= Utils::getValue($house->house_attach, 'community_name', '') ?>">
             </div>
         </div>
@@ -321,7 +321,7 @@ use app\consts\HouseConst;
             </label>
             <div class="col-sm-6" style="width: 900px;">
                 <input type="text" class="form-control"
-                       name="community_introduction"
+                       name="community_introduction" placeholder="请输入200个字以内"
                        value="<?= Utils::getValue($house->house_attach, 'community_introduction', '') ?>">
             </div>
         </div>
@@ -331,7 +331,7 @@ use app\consts\HouseConst;
             </label>
             <div class="col-sm-6" style="width: 900px;">
                 <input type="text" class="form-control"
-                       name="door_model_introduction"
+                       name="door_model_introduction" placeholder="请输入200个字以内"
                        value="<?= Utils::getValue($house->house_attach, 'door_model_introduction', '') ?>">
             </div>
         </div>
@@ -340,7 +340,7 @@ use app\consts\HouseConst;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6" style="width: 900px;">
-                <input type="text" class="form-control"
+                <input type="text" class="form-control" placeholder="请输入200个字以内"
                        name="school_info" value="<?= Utils::getValue($house->house_attach, 'school_info', '') ?>">
             </div>
         </div>
@@ -349,7 +349,7 @@ use app\consts\HouseConst;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6" style="width: 900px;">
-                <input type="text" class="form-control"
+                <input type="text" class="form-control" placeholder="请输入200个字以内"
                        name="traffic_info" value="<?= Utils::getValue($house->house_attach, 'traffic_info', '') ?>">
             </div>
         </div>
@@ -358,7 +358,7 @@ use app\consts\HouseConst;
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6" style="width: 900px;">
-                <input type="text" class="form-control"
+                <input type="text" class="form-control" placeholder="请输入200个字以内"
                        name="tax_explain" value="<?= Utils::getValue($house->house_attach, 'tax_explain', '') ?>">
             </div>
         </div>
