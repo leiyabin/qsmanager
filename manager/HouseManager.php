@@ -43,14 +43,13 @@ class HouseManager
         return $this->house_rpc->edit($house);
     }
 
-    public function getList($page_info, $area_id, $property_type_id)
+    public function getPageList($page_info, $property_type_id)
     {
-        $res = $this->house_rpc->getList($page_info, $area_id, $property_type_id);
-        if (isset($res->error_code)) {
-            return null;
-        } else {
-            //todo
-            return $res;
+        $list = $this->house_rpc->getPageList($page_info, $property_type_id);
+        if (isset($list->list)) {
+            return $list;
         }
+        return [];
     }
+
 }

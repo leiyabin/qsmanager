@@ -24,12 +24,17 @@ class HouseRpc extends LRpc
         return LRpc::init()->post($params)->url('/house/get');
     }
 
-    public function getList($page_info, $area_id, $property_type_id)
+
+    /**
+     * @param $page_info
+     * @param $property_type_id
+     * @return LRpc
+     */
+    public function getPageList($page_info, $property_type_id)
     {
         $params = [
             'page'             => intval($page_info['page']),
             'per_page'         => intval($page_info['pre_page']),
-            'area_id'          => $area_id,
             'property_type_id' => $property_type_id,
         ];
         return LRpc::init()->post($params)->url('/house/list');

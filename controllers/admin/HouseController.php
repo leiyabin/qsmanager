@@ -40,14 +40,13 @@ class HouseController extends LController
         $house_list = [];
         $pages = new Pagination(['totalCount' => 0, 'defaultPageSize' => $this->page_size]);
         //select_params
-        $area_id = $this->getRequestParam('area_id', 0);
         $property_type_id = $this->getRequestParam('property_type_id', 0);
         $select_page = empty($this->params['page']) ? $this->default_page : $this->params['page'];
         $select_page_info = ['page' => $select_page, 'pre_page' => $this->page_size];
-        $res = $this->house_manager->getList($select_page_info, $area_id, $property_type_id);
+        $res = $this->house_manager->getPageList($select_page_info, $property_type_id);
         if (!empty($res)) {
             $pages = new Pagination(['totalCount' => $res->total, 'defaultPageSize' => $res->per_page]);
-            $house_list = $res->house_list;
+            $house_list = $res->list;
         }
 
         return $this->render('index', [
