@@ -21,9 +21,9 @@ class LoupanManager
         $this->loupan_rpc = new LoupanRpc();
     }
 
-    public function getList($page_info, $area_id = 0, $name = '', $average_price = 0, $property_type_id = 0, $sale_status = 0)
+    public function getPageList($page_info, $property_type_id, $name)
     {
-        return $this->loupan_rpc->getList($page_info, $area_id, $name, $average_price, $property_type_id, $sale_status);
+        return $this->loupan_rpc->getPageList($page_info, $property_type_id, $name);
     }
 
     public function add($loupan)

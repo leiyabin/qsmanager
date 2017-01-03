@@ -99,6 +99,7 @@ class HouseController extends LController
             'community_average_price' => $this->params['community_average_price'],
             'traffic_info'            => $this->params['traffic_info'],
             'tax_explain'             => $this->params['tax_explain'],
+            'is_school_house'         => $this->params['is_school_house'],
             'school_info'             => $this->params['school_info'],
             'door_model_introduction' => $this->params['door_model_introduction'],
             'community_introduction'  => $this->params['community_introduction'],
@@ -136,22 +137,19 @@ class HouseController extends LController
         if (!Utils::validNum($this->getRequestParam('community_average_price'), true)) {
             return '请输入正确的小区均价！';
         }
-        if (!Utils::validVal($this->getRequestParam('traffic_info'), true)) {
+        if (!Utils::validVal($this->getRequestParam('traffic_info'), true, 0, 200)) {
             return '请输入不大于200字交通出行情况！';
         }
-        if (!Utils::validVal($this->getRequestParam('school_info'), true)) {
-            return '请输入不大于200字教育配套情况！';
-        }
-        if (!Utils::validVal($this->getRequestParam('traffic_info'), true)) {
+        if (!Utils::validVal($this->getRequestParam('traffic_info'), true, 0, 200)) {
             return '请输入不大于200字交通出行情况！';
         }
-        if (!Utils::validVal($this->getRequestParam('door_model_introduction'), true)) {
+        if (!Utils::validVal($this->getRequestParam('door_model_introduction'), true, 0, 200)) {
             return '请输入不大于200字户型简介！';
         }
-        if (!Utils::validVal($this->getRequestParam('tax_explain'), true)) {
+        if (!Utils::validVal($this->getRequestParam('tax_explain'), true, 0, 200)) {
             return '请输入不大于200字费税解析！';
         }
-        if (!Utils::validVal($this->getRequestParam('community_introduction'), true)) {
+        if (!Utils::validVal($this->getRequestParam('community_introduction'), true, 0, 200)) {
             return '请输入不大于200字小区简介！';
         }
         if (!Utils::validVal($this->getRequestParam('community_img'), true)) {
@@ -179,6 +177,11 @@ class HouseController extends LController
             return '请选择楼盘标签！';
         }
         $this->params['is_only'] = $this->getRequestParam('is_only', '');
+        $this->params['recommend'] = $this->getRequestParam('recommend', 0);
+        $this->params['is_school_house'] = $this->getRequestParam('is_school_house', 0);
+        if ($this->params['is_school_house'] && !Utils::validVal($this->getRequestParam('school_info'), true, 0, 200)) {
+            return '请输入不大于200字教育配套情况！';
+        }
         $this->params['recommend'] = $this->getRequestParam('recommend', 0);
         return '';
     }

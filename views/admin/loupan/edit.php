@@ -14,7 +14,6 @@ use yii\helpers\Html;
 <script charset="utf-8" src="/static/admin/js/dropdown.js"></script>
 <script charset="utf-8" src="/static/admin/js/checkbox.js"></script>
 <script type="text/javascript" src="/datetime/jedate/jedate.js"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
 <script type="text/javascript">
     $(function () {
         jeDate({
@@ -568,4 +567,5 @@ use yii\helpers\Html;
     });
 
 </script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
 <script type="text/javascript" src="/static/admin/js/map.js"></script>

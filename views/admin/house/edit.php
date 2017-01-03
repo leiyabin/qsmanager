@@ -16,7 +16,6 @@ use app\consts\HouseConst;
 <script charset="utf-8" src="/static/admin/js/dropdown.js"></script>
 <script charset="utf-8" src="/static/admin/js/checkbox.js"></script>
 <script type="text/javascript" src="/datetime/jedate/jedate.js"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
 <script type="text/javascript">
     $(function () {
         jeDate({
@@ -56,7 +55,6 @@ use app\consts\HouseConst;
             <div class="col-sm-6 dropdown" style="float:left;  width: 242px; margin-left: 30px">
                 <input type="text" class="form-control" disabled
                        value="<?= $house->area_name ?>">
-                </ul>
             </div>
         </div>
         <div class="form-group">
@@ -336,12 +334,23 @@ use app\consts\HouseConst;
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">是否为学区房
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <label>
+                    <input type="checkbox"
+                           name="is_school_house" <?php if (!empty($house->is_school_house)) echo 'checked'; ?>>
+                </label>
+            </div>
+        </div>
+        <div class="form-group" id="school_info">
             <label class="col-sm-3 control-label" style="width: 12%">教育配套
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6" style="width: 900px;">
-                <input type="text" class="form-control" placeholder="请输入200个字以内"
-                       name="school_info" value="<?= Utils::getValue($house->house_attach, 'school_info', '') ?>">
+                <input type="text" class="form-control" placeholder="请输入50个字以内"
+                       name="school_info" value="<?= Utils::getValue($house, 'school_info', '') ?>">
             </div>
         </div>
         <div class="form-group">
@@ -419,7 +428,7 @@ use app\consts\HouseConst;
                 </ul>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="loupan_feature">
             <label class="col-sm-3 control-label" style="width: 12%">楼盘特色
                 <fond style="color: red">*</fond>
             </label>
@@ -444,6 +453,17 @@ use app\consts\HouseConst;
 </div>
 <script>
     $(function () {
+        var school_info = $('#school_info');
+        var loupan_feature = $('#loupan_feature');
+        $("input[name=is_school_house]").click(function () {
+            if ($(this).is(':checked')) {
+                school_info.show();
+                loupan_feature.find('input[value=4]').attr('checked',true);
+            } else {
+                school_info.hide();
+                loupan_feature.find('input[value=4]').attr('checked',false);
+            }
+        });
         $("#add_button").click(function () {
             var $recommend = $('input:checkbox[name=recommend]');
             if ($recommend[0].checked) {
@@ -477,6 +497,11 @@ use app\consts\HouseConst;
             var $build_type = $('#dropdownMenu2').attr('tag');
             var $id = $('input[name=id]').val().trim();
             var $tag = $('input:checkbox[name=tag]:checked');
+            var $is_school_house = $('input[name=is_school_house]').is(':checked');
+            if ($is_school_house)
+                $is_school_house = 1;
+            else
+                $is_school_house = 0;
             $tag = getCheckBoxStr($tag);
             var $community_img = $('input[name=community_img_url]').val().trim();
             if ($lon == 0 || $lat == 0) {
@@ -514,7 +539,7 @@ use app\consts\HouseConst;
             if (!checkVal($tax_explain, '费税解析', true, 0, 200)) {
                 return;
             }
-            if (!checkVal($school_info, '教育配套', true, 0, 200)) {
+            if ($is_school_house ==1 && !checkVal($school_info, '教育配套', true, 0, 50)) {
                 return;
             }
             if (!checkVal($traffic_info, '交通出行', true, 0, 200)) {
@@ -548,6 +573,7 @@ use app\consts\HouseConst;
                     build_year: $build_year,
                     community_average_price: $community_average_price,
                     traffic_info: $traffic_info,
+                    is_school_house: $is_school_house,
                     school_info: $school_info,
                     door_model_introduction: $door_model_introduction,
                     community_introduction: $community_introduction,
@@ -580,4 +606,5 @@ use app\consts\HouseConst;
     });
 
 </script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
 <script type="text/javascript" src="/static/admin/js/map.js"></script>

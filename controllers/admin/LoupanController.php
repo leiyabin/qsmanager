@@ -44,17 +44,14 @@ class LoupanController extends LController
         //select_params
         $area_id = $this->getRequestParam('area_id', 0);
         $name = $this->getRequestParam('name', '');
-        $average_price = $this->getRequestParam('average_price', 0);
         $property_type_id = $this->getRequestParam('property_type_id', 0);
-        $sale_status = $this->getRequestParam('sale_status', 0);
         $select_page = empty($this->params['page']) ? $this->default_page : $this->params['page'];
         $select_page_info = ['page' => $select_page, 'pre_page' => $this->page_size];
-        $res = $this->loupan_manager->getList($select_page_info, $area_id, $name, $average_price, $property_type_id, $sale_status);
+        $res = $this->loupan_manager->getPageList($select_page_info, $property_type_id, $name);
         if (!$this->hasError($res)) {
             $pages = new Pagination(['totalCount' => $res->total, 'defaultPageSize' => $res->per_page]);
-            $loupan_list = $res->loupan_list;
+            $loupan_list = $res->list;
         }
-
         return $this->render('index', [
             'loupan_list'        => $loupan_list,
             'property_type_list' => HouseConst::$property_type,

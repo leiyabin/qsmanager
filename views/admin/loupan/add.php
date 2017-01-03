@@ -14,7 +14,6 @@ use yii\widgets\ActiveForm;
     <script charset="utf-8" src="/static/admin/js/dropdown.js"></script>
     <script charset="utf-8" src="/static/admin/js/checkbox.js"></script>
     <script type="text/javascript" src="/datetime/jedate/jedate.js"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
     <script type="text/javascript">
         $(function () {
             jeDate({
@@ -517,6 +516,7 @@ use yii\widgets\ActiveForm;
         });
 
     </script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
     <script type="text/javascript" src="/static/admin/js/map.js"></script>
 
 <?php $this->endBlock(); ?>
