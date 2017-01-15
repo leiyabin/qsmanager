@@ -86,7 +86,7 @@ use yii\helpers\Url;
                         </div>
                         <input style="margin-left: 32px" type="text" name="search" class="form-control"
                                value="<?= $name ?>"
-                               placeholder="请输入区县名称">
+                               placeholder="请输入片区名称">
                     </div>
                     <button type="submit" id="search_button" class="btn btn-success">搜索</button>
                     &nbsp;&nbsp;
@@ -103,7 +103,7 @@ use yii\helpers\Url;
                 <th><input type="checkbox" id="selectAll"></th>
                 <th>id</th>
                 <th>区县</th>
-                <th>名称</th>
+                <th>片区</th>
                 <th>创建时间</th>
                 <th>操作</th>
             </tr>

@@ -11,39 +11,59 @@ use yii\helpers\Url;
 <script charset="utf-8" src="/static/admin/js/dropdown.js"></script>
 <?php $this->beginBlock('breadcrumb');//面包屑导航 ?>
 <div class="pageheader" style="height: 50px;padding-top: 10px">
-    <h2><span style="font-style: normal">配置信息设置</span>
-        <span style="font-style: normal">配置列表</span></h2>
+    <h2><span style="font-style: normal">旅居地区管理</span>
+        <span style="font-style: normal">旅居地区列表</span></h2>
 </div>
 <?php $this->endBlock(); ?>
 
 <?php $this->beginBlock('footer');//尾部附加 ?>
 <script>
     //全选
+    function doDelete(ids) {
+        if (!window.confirm('确定要删除id为[' + ids + ']的这些记录吗?')) {
+            return false;
+        }
+        $.ajax({
+            url: '/admin/triparea/batchdel',
+            dataType: 'json',
+            data: {"ids": ids.join(',')},
+            error: function (res) {
+                alert('系统错误，请联系客服人员！');
+            },
+            success: function (res) {
+                if (res.status == 1) {
+                    alert('删除成功!');
+                    location.reload(true);
+                } else {
+                    alert(res.msg);
+                }
+            }
+        });
+    }
     $("#search_button").click(function () {
         var class_id = $('#dropdownMenu1').attr('tag');
         var value = $("input[name=search]").val().trim();
         if (class_id == 0 && value == '') {
             return;
         }
-        var url = '/admin/config/info?';
+        var url = '/admin/triparea/index?';
         if (class_id != 0) {
             url += 'class_id=' + class_id + '&';
         }
         if (value != '') {
-            url += 'value=' + value;
+            url += 'name=' + value;
         }
         location.href = url;
     });
     $("#reset_button").click(function () {
-        location.href = '/admin/config/info';
+        location.href = '/admin/triparea/index';
     })
 </script>
 <?php $this->endBlock(); ?>
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="toolbar">
-            <a href="<?= Url::to(['addinfo']); ?>" class="btn btn-primary btn-sm"><i
-                        class="glyphicon glyphicon-plus"></i>
+            <a href="<?= Url::to(['add']); ?>" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i>
                 新增</a>
             <div style="display: inline-block;margin-left:15px;">
                 <div class="form-inline">
@@ -54,26 +74,19 @@ use yii\helpers\Url;
                                     tag="<?= $class_id ?>"
                                     id="dropdownMenu1"
                                     data-toggle="dropdown">
-                                请选择分类
+                                请选择旅居城市
                             </button>
                             <ul style="margin-left: 10px;" class="dropdown-menu" role="menu">
-                                <li class="li_on_click" role="presentation" tag="3">
-                                    <a role="menuitem" tabindex="-1" href="#">房产百科</a>
-                                </li>
-                                <li class="li_on_click" role="presentation" tag="4">
-                                    <a role="menuitem" tabindex="-1" href="#">经纪人职位</a>
-                                </li>
-                                <li class="li_on_click" role="presentation" tag="9">
-                                    <a role="menuitem" tabindex="-1" href="#">区县</a>
-                                </li>
-                                <li class="li_on_click" role="presentation" tag="12">
-                                    <a role="menuitem" tabindex="-1" href="#">旅居城市</a>
-                                </li>
+                                <?php foreach ($class_list as $item): ?>
+                                    <li class="li_on_click" role="presentation" tag="<?= $item->id; ?>">
+                                        <a role="menuitem" tabindex="-1" href="#"><?= $item->value; ?></a>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                         <input style="margin-left: 32px" type="text" name="search" class="form-control"
-                               value="<?= $value ?>"
-                               placeholder="请输入配置名称">
+                               value="<?= $name ?>"
+                               placeholder="请输入旅居地区名称">
                     </div>
                     <button type="submit" id="search_button" class="btn btn-success">搜索</button>
                     &nbsp;&nbsp;
@@ -81,7 +94,7 @@ use yii\helpers\Url;
                 </div>
             </div>
         </div>
-        <h4>配置信息列表</h4>
+        <h4>旅居地区列表</h4>
     </div>
     <div class="panel-body">
         <table class="table">
@@ -89,22 +102,22 @@ use yii\helpers\Url;
             <tr>
                 <th><input type="checkbox" id="selectAll"></th>
                 <th>id</th>
-                <th>分类</th>
-                <th>配置</th>
+                <th>旅居城市</th>
+                <th>旅居地区</th>
                 <th>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($info_list as $item): ?>
+            <?php foreach ($area_list as $item): ?>
                 <tr>
                     <th><input type="checkbox" name="ids[]" value="<?= $item->id; ?>"></th>
                     <th><?= $item->id; ?></th>
                     <th><?= $item->class_name; ?></th>
-                    <th><?= $item->value; ?></th>
+                    <th><?= $item->name; ?></th>
                     <th><?= \app\components\Utils::formatDateTime($item->c_t); ?></th>
                     <th>
-                        <a href="<?= Url::to(['editinfo', 'id' => $item->id]); ?>"><i class="fa fa-pencil"></i></a>
+                        <a href="<?= Url::to(['edit', 'id' => $item->id]); ?>"><i class="fa fa-pencil"></i></a>
                     </th>
                 </tr>
             <?php endforeach; ?>

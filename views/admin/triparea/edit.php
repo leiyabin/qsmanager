@@ -11,7 +11,7 @@ use yii\helpers\Html;
 <script charset="utf-8" src="/static/admin/js/dropdown.js"></script>
 <?php $this->beginBlock('breadcrumb');//面包屑导航 ?>
 <div class="pageheader" style="height: 50px;padding-top: 10px">
-    <h2><span style="font-style: normal">片区管理</span>
+    <h2><span style="font-style: normal">旅居地区管理</span>
         <span style="font-style: normal">修改</span></h2>
 </div>
 
@@ -44,14 +44,14 @@ use yii\helpers\Html;
             var $name = $('input[name=area_name]').val().trim();
             var $id = $('input[name=id]').val().trim();
             if ($class_id == 0) {
-                alert('请选择区县！');
+                alert('请选择旅居城市！');
                 return;
             }
-            if (!checkVal($name, '片区', true, 0, 20)) {
+            if (!checkVal($name, '旅居地区', true, 0, 20)) {
                 return;
             }
             $.ajax({
-                url: '/admin/area/edit',
+                url: '/admin/triparea/edit',
                 type: 'post',
                 dataType: 'json',
                 data: {
@@ -78,7 +78,7 @@ use yii\helpers\Html;
     <input type="hidden" name="id" value="<?= $area->id ?>">
     <div class="panel-body">
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 10%">区县
+            <label class="col-sm-3 control-label" style="width: 10%">旅居城市
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6 dropdown">
@@ -86,7 +86,7 @@ use yii\helpers\Html;
                         tag="<?= $area->class_id; ?>"
                         id="dropdownMenu1"
                         data-toggle="dropdown">
-                    请选择区县
+                    请选择旅居城市
                 </button>
                 <ul style="margin-left: 10px" class="dropdown-menu" role="menu">
                     <?php foreach ($list as $item): ?>
@@ -98,7 +98,7 @@ use yii\helpers\Html;
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 10%">片区
+            <label class="col-sm-3 control-label" style="width: 10%">旅居地区
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">

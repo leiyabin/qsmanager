@@ -18,7 +18,7 @@ use app\manager\LoupanManager;
 use app\manager\ConfigManager;
 use app\consts\ConfigConst;
 
-class LoupanController extends LController
+class TriphouseController extends LController
 {
     /**
      * @var LoupanManager
@@ -46,7 +46,7 @@ class LoupanController extends LController
         $property_type_id = $this->getRequestParam('property_type_id', 0);
         $select_page = empty($this->params['page']) ? $this->default_page : $this->params['page'];
         $select_page_info = ['page' => $select_page, 'pre_page' => $this->page_size];
-        $res = $this->loupan_manager->getPageList($select_page_info, $property_type_id, $name, false);
+        $res = $this->loupan_manager->getPageList($select_page_info, $property_type_id, $name, true);
         if (!$this->hasError($res)) {
             $pages = new Pagination(['totalCount' => $res->total, 'defaultPageSize' => $res->per_page]);
             $loupan_list = $res->list;
@@ -65,7 +65,7 @@ class LoupanController extends LController
         if (!$this->is_post) {
             $list = [];
             $class_page_info = ['page' => 1, 'pre_page' => 9999];
-            $res = $this->config_manager->getInfoList($class_page_info, ConfigConst::AREA_CLASS_CONST);
+            $res = $this->config_manager->getInfoList($class_page_info, ConfigConst::TRIP_AREA_CLASS_CONST);
             if (!$this->hasError($res)) {
                 $list = $res->value_list;
             }
@@ -100,7 +100,7 @@ class LoupanController extends LController
             } else {
                 $class_list = [];
                 $class_page_info = ['page' => 1, 'pre_page' => 9999];
-                $res = $this->config_manager->getInfoList($class_page_info, ConfigConst::AREA_CLASS_CONST);
+                $res = $this->config_manager->getInfoList($class_page_info, ConfigConst::TRIP_AREA_CLASS_CONST);
                 if (!$this->hasError($res)) {
                     $class_list = $res->value_list;
                 }
@@ -152,7 +152,7 @@ class LoupanController extends LController
             'img_4'               => $this->params['img_4'],
             'img_5'               => $this->params['img_5'],
             'recommend'           => $this->params['recommend'],
-            'is_trip_house'       => 0,
+            'is_trip_house'       => 1,
         ];
         return $loupan;
     }

@@ -14,8 +14,7 @@ use yii\helpers\Url;
         $("#search_button").click(function () {
             var class_id = $('#dropdownMenu1').attr('tag');
             var value = $("input[name=search]").val().trim();
-            var tag = $('input[name=is_trip_house]:checked').val();
-            var url = '/admin/loupan/index?';
+            var url = '/admin/triphouse/index';
             if (class_id != 0) {
                 url += 'property_type_id=' + class_id + '&';
             }
@@ -27,13 +26,13 @@ use yii\helpers\Url;
 
         });
         $("#reset_button").click(function () {
-            location.href = '/admin/loupan/index';
-        })
+            location.href = '/admin/triphouse/index';
+        });
     })
 </script>
 <?php $this->beginBlock('breadcrumb');//面包屑导航 ?>
 <div class="pageheader" style="height: 50px;padding-top: 10px">
-    <h2><span style="font-style: normal">新房</span>
+    <h2><span style="font-style: normal">旅居</span>
         <span style="font-style: normal">楼盘列表</span></h2>
 </div>
 <?php $this->endBlock(); ?>
@@ -83,8 +82,8 @@ use yii\helpers\Url;
                 <th>id</th>
                 <th>名称</th>
                 <th>物业类型</th>
-                <th>片区</th>
-                <th>地址</th>
+                <th>城市</th>
+                <th>地区</th>
                 <th>户型</th>
                 <th>创建时间</th>
                 <th>操作</th>

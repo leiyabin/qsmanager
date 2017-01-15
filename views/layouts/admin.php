@@ -68,6 +68,11 @@ use yii\helpers\Url;
                             <li><a href="/admin/loupan/index/"><i class="fa fa-caret-right"></i>楼盘列表</a></li>
                         </ul>
                     </li>
+                    <li class="nav-parent"><a href=""><i class="fa fa-edit"></i> <span>旅居</span></a>
+                        <ul class="children">
+                            <li><a href="/admin/triphouse/index/"><i class="fa fa-caret-right"></i>楼盘列表</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-parent"><a href=""><i class="fa fa-edit"></i> <span>房产百科</span></a>
                         <ul class="children">
                             <li><a href="/admin/news/list/"><i class="fa fa-caret-right"></i>房产百科列表</a></li>
@@ -90,9 +95,9 @@ use yii\helpers\Url;
                     </li>
                     <li class="nav-parent"><a href=""><i class="fa fa-edit"></i> <span>配置信息设置</span></a>
                         <ul class="children">
-                            <!--                            <li><a href="/admin/config/class/"><i class="fa fa-caret-right"></i>分类列表</a></li>-->
                             <li><a href="/admin/config/info/"><i class="fa fa-caret-right"></i>配置列表</a></li>
                             <li><a href="/admin/area/index/"><i class="fa fa-caret-right"></i>片区管理</a></li>
+                            <li><a href="/admin/triparea/index/"><i class="fa fa-caret-right"></i>旅居地区管理</a></li>
                         </ul>
                     </li>
                 </ul>

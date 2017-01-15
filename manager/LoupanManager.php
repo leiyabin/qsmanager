@@ -21,14 +21,14 @@ class LoupanManager
         $this->loupan_rpc = new LoupanRpc();
     }
 
-    public function getPageList($page_info, $property_type_id, $name)
-    {
-        return $this->loupan_rpc->getPageList($page_info, $property_type_id, $name);
-    }
-
     public function add($loupan)
     {
         return $this->loupan_rpc->add($loupan);
+    }
+
+    public function getPageList($page_info, $property_type_id, $name, $is_trip_house)
+    {
+        return $this->loupan_rpc->getPageList($page_info, $property_type_id, $name,$is_trip_house);
     }
 
     public function edit($loupan)

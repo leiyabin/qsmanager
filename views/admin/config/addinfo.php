@@ -36,6 +36,9 @@ use yii\helpers\Html;
                         <li class="li_on_click" role="presentation" tag="9">
                             <a role="menuitem" tabindex="-1" href="#">区县</a>
                         </li>
+                        <li class="li_on_click" role="presentation" tag="12">
+                            <a role="menuitem" tabindex="-1" href="#">旅居城市</a>
+                        </li>
                     </ul>
                 </div>
             </div>

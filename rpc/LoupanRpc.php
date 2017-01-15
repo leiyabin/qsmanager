@@ -18,13 +18,14 @@ class LoupanRpc extends LRpc
      * @param $name
      * @return LRpc
      */
-    public function getPageList($page_info, $property_type_id, $name)
+    public function getPageList($page_info, $property_type_id, $name, $is_trip_house)
     {
         $params = [
             'page'             => intval($page_info['page']),
             'per_page'         => intval($page_info['pre_page']),
             'property_type_id' => $property_type_id,
-            'name'             => $name
+            'name'             => $name,
+            'is_trip_house'    => $is_trip_house
         ];
         return LRpc::init()->post($params)->url('/loupan/list');
     }

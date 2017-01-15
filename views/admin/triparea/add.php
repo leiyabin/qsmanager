@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
     <script charset="utf-8" src="/static/admin/js/dropdown.js"></script>
 <?php $this->beginBlock('breadcrumb');//面包屑导航 ?>
     <div class="pageheader" style="height: 50px;padding-top: 10px">
-        <h2><span style="font-style: normal">片区管理</span>
+        <h2><span style="font-style: normal">旅居地区管理</span>
             <span style="font-style: normal">添加</span></h2>
     </div>
 <?php $this->endBlock(); ?>
@@ -20,14 +20,14 @@ use yii\widgets\ActiveForm;
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="form-group">
-                <label class="col-sm-3 control-label" style="width: 10%">区县
+                <label class="col-sm-3 control-label" style="width: 10%">旅居城市
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6 dropdown">
                     <button style="width: 200px;" class="btn btn-default dropdown-toggle" type="button" tag="0"
                             id="dropdownMenu1"
                             data-toggle="dropdown">
-                        请选择区县
+                        请选择旅居城市
                     </button>
                     <ul style="margin-left: 10px" class="dropdown-menu" role="menu">
                         <?php foreach ($list as $item): ?>
@@ -36,11 +36,11 @@ use yii\widgets\ActiveForm;
                             </li>
                         <?php endforeach; ?>
                     </ul>
-                    <fond style="color: red">注意：【配置列表】中添加区县</fond>
+                    <fond style="color: red">注意：【配置列表】中添加旅居城市</fond>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label" style="width: 10%">片区
+                <label class="col-sm-3 control-label" style="width: 10%">旅居地区
                     <fond style="color: red">*</fond>
                 </label>
                 <div class="col-sm-6">
@@ -63,14 +63,14 @@ use yii\widgets\ActiveForm;
                     var $class_id = $('#dropdownMenu1').attr('tag');
                     var $name = $('input[name=area_name]').val().trim();
                     if ($class_id == 0) {
-                        alert('请选择区县！');
+                        alert('请选择旅居城市！');
                         return;
                     }
-                    if (!checkVal($name, '片区', true, 0, 50)) {
+                    if (!checkVal($name, '旅居地区', true, 0, 50)) {
                         return;
                     }
                     $.ajax({
-                        url: '/admin/area/add',
+                        url: '/admin/triparea/add',
                         type: 'post',
                         dataType: 'json',
                         data: {

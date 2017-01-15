@@ -15,7 +15,7 @@ use app\manager\AreaManager;
 use app\manager\ConfigManager;
 use app\consts\ConfigConst;
 
-class AreaController extends LController
+class TripareaController extends LController
 {
     /**
      * @var AreaManager
@@ -42,13 +42,13 @@ class AreaController extends LController
         $name = $this->getRequestParam('name', '');
         $page = empty($this->params['page']) ? $this->default_page : $this->params['page'];
         $page_info = ['page' => $page, 'pre_page' => $this->page_size];
-        $res = $this->area_manager->getList($page_info, $class_id, $name);
+        $res = $this->area_manager->getList($page_info, $class_id, $name,true);
         if (!$this->hasError($res)) {
             $pages = new Pagination(['totalCount' => $res->total, 'defaultPageSize' => $res->per_page]);
             $area_list = $res->list;
         }
         $class_page_info = ['page' => 1, 'pre_page' => 9999];
-        $res = $this->config_manager->getInfoList($class_page_info, ConfigConst::AREA_CLASS_CONST);
+        $res = $this->config_manager->getInfoList($class_page_info, ConfigConst::TRIP_AREA_CLASS_CONST);
         if (!$this->hasError($res)) {
             $class_list = $res->value_list;
         }
@@ -66,7 +66,7 @@ class AreaController extends LController
         if (!$this->is_post) {
             $list = [];
             $class_page_info = ['page' => 1, 'pre_page' => 9999];
-            $res = $this->config_manager->getInfoList($class_page_info, ConfigConst::AREA_CLASS_CONST);
+            $res = $this->config_manager->getInfoList($class_page_info, ConfigConst::TRIP_AREA_CLASS_CONST);
             if (!$this->hasError($res)) {
                 $list = $res->value_list;
             }
@@ -107,7 +107,7 @@ class AreaController extends LController
             } else {
                 $class_list = [];
                 $class_page_info = ['page' => 1, 'pre_page' => 9999];
-                $res = $this->config_manager->getInfoList($class_page_info, ConfigConst::AREA_CLASS_CONST);
+                $res = $this->config_manager->getInfoList($class_page_info, ConfigConst::TRIP_AREA_CLASS_CONST);
                 if (!$this->hasError($res)) {
                     $class_list = $res->value_list;
                 }
