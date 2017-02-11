@@ -14,7 +14,7 @@ use yii\helpers\Url;
         $("#search_button").click(function () {
             var class_id = $('#dropdownMenu1').attr('tag');
             var value = $("input[name=search]").val().trim();
-            var url = '/admin/triphouse/index';
+            var url = '/admin/triphouse/index?';
             if (class_id != 0) {
                 url += 'property_type_id=' + class_id + '&';
             }
