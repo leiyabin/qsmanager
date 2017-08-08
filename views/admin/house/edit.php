@@ -333,17 +333,6 @@ use app\consts\HouseConst;
                        value="<?= Utils::getValue($house->house_attach, 'door_model_introduction', '') ?>">
             </div>
         </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">是否为学区房
-                <fond style="color: red">*</fond>
-            </label>
-            <div class="col-sm-6">
-                <label>
-                    <input type="checkbox"
-                           name="is_school_house" <?php if (!empty($house->is_school_house)) echo 'checked'; ?>>
-                </label>
-            </div>
-        </div>
         <div class="form-group" id="school_info">
             <label class="col-sm-3 control-label" style="width: 12%">教育配套
                 <fond style="color: red">*</fond>
