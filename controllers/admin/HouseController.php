@@ -68,7 +68,13 @@ class HouseController extends LController
             if (empty($house)) {
                 $this->redirect(['/admin/house/index']);
             } else {
-                $data = ['house' => $house];
+                $class_list = [];
+                $class_page_info = ['page' => 1, 'pre_page' => 9999];
+                $res = $this->config_manager->getInfoList($class_page_info, ConfigConst::AREA_CLASS_CONST);
+                if (!$this->hasError($res)) {
+                    $class_list = $res->value_list;
+                }
+                $data = ['house' => $house, 'list' => $class_list];
                 return $this->render('edit', $data);
             }
         } else {

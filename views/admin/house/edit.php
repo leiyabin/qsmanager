@@ -49,40 +49,69 @@ use app\consts\HouseConst;
             <label class="col-sm-3 control-label" style="width: 12%">区县/片区
             </label>
             <div class="col-sm-6 dropdown" style="float:left; width: 242px;">
-                <input type="text" disabled class="form-control"
-                       value="<?= $house->quxian_name ?>">
+                <button style="width: 230px;" class="btn btn-default dropdown-toggle" type="button"
+                        tag="<?= $house->quxian_id; ?>"
+                        id="dropdownMenu1"
+                        data-toggle="dropdown">
+                    请选择区县
+                </button>
+                <ul style="margin-left: 10px;" class="dropdown-menu" role="menu">
+                    <?php foreach ($list as $item): ?>
+                        <li class="li_on_click quxian" role="presentation" tag="<?= $item->id; ?>">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0);"><?= $item->value; ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
-            <div class="col-sm-6 dropdown" style="float:left;  width: 242px; margin-left: 30px">
-                <input type="text" class="form-control" disabled
-                       value="<?= $house->area_name ?>">
+            <div class="col-sm-6 dropdown" style="float:left;  width: 296px; margin-left: 23px">
+                <button style="width: 230px;" class="btn btn-default dropdown-toggle" type="button"
+                        tag="<?= $house->area_id; ?>"
+                        id="dropdownMenu2"
+                        data-toggle="dropdown">
+                    <?= $house->area_name; ?>
+                </button>
+                <ul style="margin-left: 10px;" class="dropdown-menu area-dropdown" role="menu">
+                </ul>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">地址
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" value="<?= $house->address ?>">
+                <input type="text"  class="form-control" value="<?= $house->address ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">物业公司
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" value="<?= $house->property_company ?>">
+                <input type="text"  class="form-control" value="<?= $house->property_company ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">物业类型
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" value="<?= $house->property_type ?>">
+                <button style="width: 200px;" class="btn btn-default dropdown-toggle" type="button"
+                        tag="<?= $house->property_type_id; ?>"
+                        id="dropdownMenu3"
+                        data-toggle="dropdown">
+                    <?= $house->property_type; ?>
+                </button>
+                <ul style="margin-left: 10px" class="dropdown-menu" role="menu">
+                    <?php foreach (\app\consts\HouseConst::$property_type as $key => $name): ?>
+                        <li class="li_on_click" role="presentation" tag="<?= $key ?>">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0);"><?= $name ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">房龄
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled style="width: 460px; display: inline" class="form-control"
+                <input type="number"  style="width: 460px; display: inline" class="form-control"
                        class="form-control" value="<?= $house->house_age ?>">年
             </div>
         </div>
@@ -90,7 +119,7 @@ use app\consts\HouseConst;
             <label class="col-sm-3 control-label" style="width: 12%">所在楼层
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled style="width: 460px; display: inline" class="form-control"
+                <input type="number"  style="width: 460px; display: inline" class="form-control"
                        value="<?= $house->in_floor ?>">层
             </div>
         </div>
@@ -98,7 +127,7 @@ use app\consts\HouseConst;
             <label class="col-sm-3 control-label" style="width: 12%">总楼层
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled style="width: 460px; display: inline" class="form-control"
+                <input type="number"  style="width: 460px; display: inline" class="form-control"
                        value="<?= $house->total_floor ?>">层
             </div>
         </div>
@@ -114,28 +143,28 @@ use app\consts\HouseConst;
             <label class="col-sm-3 control-label" style="width: 12%">装修
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" value="<?= $house->decoration_name ?>">
+                <input type="text" class="form-control" value="<?= $house->decoration_name ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">产权类型
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" value="<?= $house->right_type_name ?>">
+                <input type="text" class="form-control" value="<?= $house->right_type_name ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">购买方式
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" value="<?= $house->buy_type_name ?>">
+                <input type="text" class="form-control" value="<?= $house->buy_type_name ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">单价
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" style="width: 460px; display: inline"
+                <input type="text"  class="form-control" style="width: 460px; display: inline"
                        value="<?= $house->unit_price ?>">元
             </div>
         </div>
@@ -143,7 +172,7 @@ use app\consts\HouseConst;
             <label class="col-sm-3 control-label" style="width: 12%">总价
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" style="width: 460px; display: inline"
+                <input type="text"  class="form-control" style="width: 460px; display: inline"
                        value="<?= $house->total_price ?>">万元
             </div>
         </div>
@@ -151,14 +180,14 @@ use app\consts\HouseConst;
             <label class="col-sm-3 control-label" style="width: 12%">朝向
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" value="<?= $house->face ?>">
+                <input type="text" class="form-control" value="<?= $house->face ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">建筑面积
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" style="width: 460px; display: inline"
+                <input type="text" class="form-control" style="width: 460px; display: inline"
                        value="<?= $house->build_area ?>">平米
             </div>
         </div>
@@ -166,28 +195,28 @@ use app\consts\HouseConst;
             <label class="col-sm-3 control-label" style="width: 12%">房屋设施
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" value="<?= $house->house_facility ?>">
+                <input type="text" class="form-control" value="<?= $house->house_facility ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">房屋描述
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" value="<?= $house->house_description ?>">
+                <input type="text" class="form-control" value="<?= $house->house_description ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">楼层单元
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" value="<?= $house->floor_unit ?>">
+                <input type="text" class="form-control" value="<?= $house->floor_unit ?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">关键字
             </label>
             <div class="col-sm-6">
-                <input type="text" disabled class="form-control" value="<?= $house->keywords ?>">
+                <input type="text" class="form-control" value="<?= $house->keywords ?>">
             </div>
         </div>
         <div class="form-group">
@@ -444,6 +473,35 @@ use app\consts\HouseConst;
     $(function () {
         var school_info = $('#school_info');
         var loupan_feature = $('#loupan_feature');
+        $(".quxian").click(function () {
+            var $class_id = $(this).attr('tag');
+            //获取片区数据
+            $.ajax({
+                url: '/admin/area/getbyclassid',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    class_id: $class_id
+                },
+                success: function (res) {
+                    if (res.status == 1) {
+                        var $ul = $('.area-dropdown');
+                        $ul.find('li').remove();
+                        $ul.siblings('button').html('请选择片区').attr('tag', 0);
+                        for (var j in res.data) {
+                            $('<li class="li_on_click" onclick="li_on_click_fun($(this))" role="presentation" tag="' + res.data[j].id + '">' +
+                                '<a role="menuitem" tabindex="-1" href="javascript:void(0);">' + res.data[j].name + '</a></li>').appendTo($ul);
+                        }
+                    } else {
+                        alert(res.msg);
+                    }
+                },
+                error: function () {
+                    alert('系统错误，请联系客服人员！');
+                }
+            })
+
+        });
         $("input[name=is_school_house]").click(function () {
             if ($(this).is(':checked')) {
                 school_info.show();

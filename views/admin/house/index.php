@@ -38,63 +38,65 @@ use yii\helpers\Url;
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="toolbar">
-            <div style="display: inline-block;">
-                <div class="form-inline"
-                ">
-                <div class="form-group">
-                    <div class="col-sm-6 dropdown">
-                        <button style="width: 200px; height: 40px" class="btn btn-default dropdown-toggle"
-                                type="button"
-                                tag="<?= $property_type_id ?>"
-                                id="dropdownMenu1"
-                                data-toggle="dropdown">
-                            请选择物业类型
-                        </button>
-                        <ul style="margin-left: 10px;" class="dropdown-menu" role="menu">
-                            <?php foreach ($property_type_list as $key => $item): ?>
-                                <li class="li_on_click" role="presentation" tag="<?= $key; ?>">
-                                    <a role="menuitem" tabindex="-1" href="#"><?= $item; ?></a>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
+            <a href="<?= Url::to(['add']); ?>" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i>
+                新增</a>
+            <div style="display: inline-block;margin-left:15px;">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <div class="col-sm-6 dropdown">
+                            <button style="width: 200px; height: 40px" class="btn btn-default dropdown-toggle"
+                                    type="button"
+                                    tag="<?= $property_type_id ?>"
+                                    id="dropdownMenu1"
+                                    data-toggle="dropdown">
+                                请选择物业类型
+                            </button>
+                            <ul style="margin-left: 10px;" class="dropdown-menu" role="menu">
+                                <?php foreach ($property_type_list as $key => $item): ?>
+                                    <li class="li_on_click" role="presentation" tag="<?= $key; ?>">
+                                        <a role="menuitem" tabindex="-1" href="#"><?= $item; ?></a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
                     </div>
+                    <button type="submit" id="search_button" class="btn btn-success">搜索</button>
+                    &nbsp;&nbsp;<button type="submit" id="reset_button" class="btn btn-info">重置</button>
                 </div>
-                <button type="submit" id="search_button" class="btn btn-success">搜索</button>
-                &nbsp;&nbsp;<button type="submit" id="reset_button" class="btn btn-info">重置</button>
             </div>
         </div>
+        <h4>二手房列表</h4>
     </div>
-    <h4>楼盘列表</h4>
-</div>
-<div class="panel-body">
-    <table class="table">
-        <thead>
-        <tr>
-            <th>id</th>
-            <th>物业类型</th>
-            <th>片区</th>
-            <th>地址</th>
-            <th>创建时间</th>
-            <th>操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($house_list as $item): ?>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
             <tr>
-                <th><?= $item->id; ?></th>
-                <th><?= $item->property_type; ?></th>
-                <th><?= $item->area_name; ?></th>
-                <th><?= $item->address; ?></th>
-                <th><?= \app\components\Utils::formatDateTime($item->c_t); ?></th>
-                <th>
-                    <a href="<?= Url::to(['edit', 'id' => $item->id]); ?>"><i class="fa fa-pencil"></i></a>
-                </th>
+                <th>id</th>
+                <th>物业类型</th>
+                <th>片区</th>
+                <th>地址</th>
+                <th>创建时间</th>
+                <th>操作</th>
             </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div>
-        <?= \yii\widgets\LinkPager::widget(['pagination' => $pages]); ?>
+            </thead>
+            <tbody>
+            <?php foreach ($house_list as $item): ?>
+                <tr>
+                    <th><?= $item->id; ?></th>
+                    <th><?= $item->property_type; ?></th>
+                    <th><?= $item->area_name; ?></th>
+                    <th><?= $item->address; ?></th>
+                    <th><?= \app\components\Utils::formatDateTime($item->c_t); ?></th>
+                    <th>
+                        <a href="<?= Url::to(['edit', 'id' => $item->id]); ?>"><i class="fa fa-pencil"></i></a>
+                    </th>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+        <div>
+            <?= \yii\widgets\LinkPager::widget(['pagination' => $pages]); ?>
+        </div>
     </div>
 </div>
-</div>
+
