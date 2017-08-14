@@ -43,6 +43,11 @@ class HouseManager
         return $this->house_rpc->edit($house);
     }
 
+    public function add($house)
+    {
+        return $this->house_rpc->add($house);
+    }
+
     public function getPageList($page_info, $property_type_id)
     {
         $list = $this->house_rpc->getPageList($page_info, $property_type_id);

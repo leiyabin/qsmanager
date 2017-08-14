@@ -12,10 +12,16 @@ use app\components\LRpc;
 
 class HouseRpc extends LRpc
 {
-    public function edit($loupan)
+    public function edit($house)
     {
-        $params = $loupan;
+        $params = $house;
         return LRpc::init()->post($params)->url('/house/edit');
+    }
+
+    public function add($house)
+    {
+        $params = $house;
+        return LRpc::init()->post($params)->url('/house/add');
     }
 
     public function getOne($id)

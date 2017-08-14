@@ -61,7 +61,7 @@ class HouseController extends LController
     {
         $id = $this->getRequestParam('id');
         if (empty($id)) {
-            return $this->render('index');
+            $this->redirect(['/admin/house/index']);
         }
         if (!$this->is_post) {
             $house = $this->house_manager->get($id);
@@ -87,6 +87,33 @@ class HouseController extends LController
             $res = $this->house_manager->edit($house);
             if ($this->hasError($res)) {
                 return $this->error('修改失败！');
+            } else {
+                return $this->success();
+            }
+        }
+    }
+
+    public function actionAdd()
+    {
+        if (!$this->is_post) {
+            $class_list = [];
+            $class_page_info = ['page' => 1, 'pre_page' => 9999];
+            $res = $this->config_manager->getInfoList($class_page_info, ConfigConst::AREA_CLASS_CONST);
+            if (!$this->hasError($res)) {
+                $class_list = $res->value_list;
+            }
+            $data = ['list' => $class_list];
+            return $this->render('add', $data);
+        } else {
+            $error_msg = $this->checkParams();
+            if ($error_msg) {
+                return $this->error($error_msg);
+            }
+            $house = $this->getHouse();
+            $house['id'] = $id;
+            $res = $this->house_manager->add($house);
+            if ($this->hasError($res)) {
+                return $this->error('添加失败！');
             } else {
                 return $this->success();
             }
