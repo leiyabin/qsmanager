@@ -110,7 +110,6 @@ class HouseController extends LController
                 return $this->error($error_msg);
             }
             $house = $this->getHouse();
-            $house['id'] = $id;
             $res = $this->house_manager->add($house);
             if ($this->hasError($res)) {
                 return $this->error('添加失败！');
@@ -123,6 +122,34 @@ class HouseController extends LController
     private function getHouse()
     {
         $house = [
+            'area_id'                 => $this->params['area_id'],
+            'property_type_id'        => $this->params['property_type_id'],
+            'address'                 => $this->params['address'],
+            'property_company'        => $this->params['property_company'],
+            'house_age'               => $this->params['house_age'],
+            'in_floor'                => $this->params['in_floor'],
+            'total_floor'             => $this->params['total_floor'],
+            'jishi'                   => $this->params['jishi'],
+            'jitin'                   => $this->params['jitin'],
+            'jiwei'                   => $this->params['jiwei'],
+            'jichu'                   => $this->params['jichu'],
+            'jiyangtai'               => $this->params['jiyangtai'],
+            'decoration_id'           => $this->params['decoration_id'],
+            'right_type_id'           => $this->params['right_type_id'],
+            'buy_type_id'             => $this->params['buy_type_id'],
+            'unit_price'              => $this->params['unit_price'],
+            'total_price'             => $this->params['total_price'],
+            'face'                    => $this->params['face'],
+            'build_area'              => $this->params['build_area'],
+            'floor_unit'              => $this->params['floor_unit'],
+            'house_facility'          => $this->params['house_facility'],
+            'house_description'       => $this->params['house_description'],
+            'keywords'                => $this->params['keywords'],
+            'img_1'                   => $this->params['img_1'],
+            'img_2'                   => $this->params['img_2'],
+            'img_3'                   => $this->params['img_3'],
+            'img_4'                   => $this->params['img_4'],
+            'img_5'                   => $this->params['img_5'],
             'build_type'              => $this->params['build_type'],
             'total_door_model'        => $this->params['total_door_model'],
             'total_building'          => $this->params['total_building'],

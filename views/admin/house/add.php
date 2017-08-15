@@ -108,7 +108,7 @@ use app\consts\HouseConst;
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">房龄 <fond style="color: red">*</fond>
+            <label class="col-sm-3 control-label" style="width: 12%">建筑年代<fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
                 <input type="number"  style="width: 460px; display: inline" class="form-control" name="house_age"
@@ -139,6 +139,7 @@ use app\consts\HouseConst;
                 <input type="number"  name="jitin" style="width: 460px; display: inline" class="form-control">厅
                 <input type="number"  name="jiwei" style="width: 460px; display: inline" class="form-control">卫
                 <input type="number"  name="jichu" style="width: 460px; display: inline" class="form-control">厨
+                <input type="number"  name="jiyangtai" style="width: 440px; display: inline" class="form-control">阳台
             </div>
         </div>
         <div class="form-group">
@@ -640,6 +641,7 @@ use app\consts\HouseConst;
             var $jitin = $('input[name=jitin]').val().trim();
             var $jiwei = $('input[name=jiwei]').val().trim();
             var $jichu = $('input[name=jichu]').val().trim();
+            var $jiyangtai = $('input[name=jiyangtai]').val().trim();
             var $decoration_id = $('#decoration_dropdownMenu').attr('tag');
             var $right_type_id = $('#right_type_dropdownMenu').attr('tag');
             var $buy_type_id = $('#buy_type_dropdownMenu').attr('tag');
@@ -651,12 +653,13 @@ use app\consts\HouseConst;
             var $house_facility = $('input[name=house_facility]').val().trim();
             var $house_description = $('input[name=house_description]').val().trim();
             var $keywords = $('input[name=keywords]').val().trim();
+            var $img_1 = $('input[name=img_1_url]').val().trim();
+            var $img_2 = $('input[name=img_2_url]').val().trim();
+            var $img_3 = $('input[name=img_3_url]').val().trim();
+            var $img_4 = $('input[name=img_4_url]').val().trim();
+            var $img_5 = $('input[name=img_5_url]').val().trim();
             if ($area_id == 0) {
                 alert('请选择片区！');
-                return;
-            }
-            if ($property_type_id == 0) {
-                alert('请选择物业类型！');
                 return;
             }
             if (!checkVal($address, '地址', true, 0, 50)) {
@@ -665,7 +668,11 @@ use app\consts\HouseConst;
             if (!checkVal($property_company, '物业公司', true, 0, 50)) {
                 return;
             }
-            if (!checkNum($house_age, '房龄', true)) {
+            if ($property_type_id == 0) {
+                alert('请选择物业类型！');
+                return;
+            }
+            if (!checkNum($house_age, '建筑年代', true)) {
                 return;
             }
             if (!checkNum($in_floor, '所在楼层', true)) {
@@ -684,6 +691,9 @@ use app\consts\HouseConst;
                 return;
             }
             if (!checkNum($jichu, '户型', true)) {
+                return;
+            }
+            if (!checkNum($jiyangtai, '户型', true)) {
                 return;
             }
             if ($decoration_id == 0) {
@@ -720,6 +730,18 @@ use app\consts\HouseConst;
                 return;
             }
             if (!checkVal($keywords, '关键字', true, 0, 200)) {
+                return;
+            }
+            if (!checkVal($img_1, '房屋图片1', true)) {
+                return;
+            }
+            if (!checkVal($img_2, '房屋图片2', true)) {
+                return;
+            }
+            if (!checkVal($img_3, '房屋图片3', true)) {
+                return;
+            }
+            if (!checkVal($img_4, '房屋图片4', true)) {
                 return;
             }
             var $build_type = $('#dropdownMenu5').attr('tag');
@@ -795,7 +817,32 @@ use app\consts\HouseConst;
                 data: {
                     area_id: $area_id,
                     property_type_id: $property_type_id,
-
+                    address:$address,
+                    property_company:$property_company,
+                    house_age:$house_age,
+                    in_floor:$in_floor,
+                    total_floor:$total_floor,
+                    jishi:$jishi,
+                    jitin:$jitin,
+                    jiwei:$jiwei,
+                    jichu:$jichu,
+                    jiyangtai:$jiyangtai,
+                    decoration_id:$decoration_id,
+                    right_type_id:$right_type_id,
+                    buy_type_id:$buy_type_id,
+                    unit_price:$unit_price,
+                    total_price:$total_price,
+                    face:$face,
+                    build_area:$build_area,
+                    floor_unit:$floor_unit,
+                    house_facility:$house_facility,
+                    house_description:$house_description,
+                    keywords:$keywords,
+                    img_1:$img_1,
+                    img_2:$img_2,
+                    img_3:$img_3,
+                    img_4:$img_4,
+                    img_5:$img_5,
                     build_type: $build_type,
                     total_door_model: $total_door_model,
                     total_building: $total_building,
