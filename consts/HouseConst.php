@@ -132,7 +132,7 @@ class HouseConst
     public static $buy_type = [
         self::BUY_TYPE_ALL            => '全款',
         self::BUY_TYPE_BUSSINESS_LOAN => '商贷',
-        self::BUY_TYPE_BUSSINESS_LOAN => '公积金',
+        self::BUY_TYPE_FUND_LOAN => '公积金',
     ];
 
     //房本年限
@@ -172,6 +172,27 @@ class HouseConst
         self::BROKER_TYPE_4 => '带看活跃',
         self::BROKER_TYPE_5 => '法律顾问',
         self::BROKER_TYPE_6 => '海外顾问',
+    ];
+
+    //产权类型
+    const right_type_1 = 1;
+    const right_type_2 = 2;
+    const right_type_3 = 3;
+    const right_type_4 = 4;
+    const right_type_5 = 5;
+    const right_type_6 = 6;
+    const right_type_7 = 7;
+    const right_type_8 = 8;
+
+    public static $right_type = [
+        self::right_type_1 => '成本价',
+        self::right_type_2 => '优惠价',
+        self::right_type_3 => '商品房',
+        self::right_type_4 => '使用权',
+        self::right_type_5 => '经济适用房',
+        self::right_type_6 => '改底单',
+        self::right_type_7 => '乡产',
+        self::right_type_8 => '军产',
     ];
 
 }

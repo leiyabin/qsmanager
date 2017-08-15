@@ -18,6 +18,23 @@ function checkVal(val, name, required, minlenght, maxlength) {
     return res;
 }
 
+function checkNum(val, name, required) {
+    var res = true;
+    if (required && val == '') {
+        alert(name + '不能为空');
+        res = false;
+    }
+    if (val != '' && minlenght !== undefined && val.length < minlenght) {
+        alert(name + '长度不能小于' + minlenght);
+        res = false;
+    }
+    if (val != '' && maxlength !== undefined && val.length > maxlength) {
+        alert(name + '长度不能大于' + maxlength);
+        res = false;
+    }
+    return res;
+}
+
 
 function checkType(val, type) {
     if (type == 'email') {

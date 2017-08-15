@@ -46,7 +46,7 @@ use app\consts\HouseConst;
     <input type="hidden" name="id" value="0">
     <div class="panel-body">
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">区县/片区
+            <label class="col-sm-3 control-label" style="width: 12%">区县/片区 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6 dropdown" style="float:left; width: 242px;">
                 <button style="width: 230px;" class="btn btn-default dropdown-toggle" type="button"
@@ -75,21 +75,21 @@ use app\consts\HouseConst;
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">地址
+            <label class="col-sm-3 control-label" style="width: 12%">地址 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text"  class="form-control" value="" name="address">
+                <input type="text"  class="form-control" value="" name="address" placeholder="请输入50个字以内">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">物业公司
+            <label class="col-sm-3 control-label" style="width: 12%">物业公司 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text"  class="form-control" value="" name="property_company">
+                <input type="text"  class="form-control" value="" name="property_company" placeholder="请输入50个字以内">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">物业类型
+            <label class="col-sm-3 control-label" style="width: 12%">物业类型 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
                 <button style="width: 200px;" class="btn btn-default dropdown-toggle" type="button"
@@ -108,113 +108,207 @@ use app\consts\HouseConst;
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">房龄
+            <label class="col-sm-3 control-label" style="width: 12%">房龄 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="number"  style="width: 460px; display: inline" class="form-control"
+                <input type="number"  style="width: 460px; display: inline" class="form-control" name="house_age"
                        class="form-control" value="">年
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">所在楼层
+            <label class="col-sm-3 control-label" style="width: 12%">所在楼层 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="number"  style="width: 460px; display: inline" class="form-control"
+                <input type="number"  style="width: 460px; display: inline" class="form-control" name="in_floor"
                        value="">层
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">总楼层
+            <label class="col-sm-3 control-label" style="width: 12%">总楼层 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="number"  style="width: 460px; display: inline" class="form-control"
+                <input type="number"  style="width: 460px; display: inline" class="form-control" name="total_floor"
                        value="">层
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">户型
+            <label class="col-sm-3 control-label" style="width: 12%">户型 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
+                <input type="number"  name="jishi" style="width: 460px; display: inline" class="form-control">室
+                <input type="number"  name="jitin" style="width: 460px; display: inline" class="form-control">厅
+                <input type="number"  name="jiwei" style="width: 460px; display: inline" class="form-control">卫
+                <input type="number"  name="jichu" style="width: 460px; display: inline" class="form-control">厨
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">装修
+            <label class="col-sm-3 control-label" style="width: 12%">装修情况 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" value="">
+                <button style="width: 200px;" class="btn btn-default dropdown-toggle" type="button"
+                        tag=""
+                        id="decoration_dropdownMenu"
+                        data-toggle="dropdown">
+                    请选择装修情况
+                </button>
+                <ul style="margin-left: 10px" class="dropdown-menu" role="menu">
+                    <?php foreach (\app\consts\HouseConst::$decoration as $key => $name): ?>
+                        <li class="li_on_click" role="presentation" tag="<?= $key ?>">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0);"><?= $name ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">产权类型
+            <label class="col-sm-3 control-label" style="width: 12%">产权类型 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" value="">
+                <button style="width: 200px;" class="btn btn-default dropdown-toggle" type="button"
+                        tag=""
+                        id="right_type_dropdownMenu"
+                        data-toggle="dropdown">
+                    请选择产权类型
+                </button>
+                <ul style="margin-left: 10px" class="dropdown-menu" role="menu">
+                    <?php foreach (\app\consts\HouseConst::$right_type as $key => $name): ?>
+                        <li class="li_on_click" role="presentation" tag="<?= $key ?>">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0);"><?= $name ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">购买方式
+            <label class="col-sm-3 control-label" style="width: 12%">购买方式 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" value="">
+                <button style="width: 200px;" class="btn btn-default dropdown-toggle" type="button"
+                        tag=""
+                        id="buy_type_dropdownMenu"
+                        data-toggle="dropdown">
+                    请选择购买方式
+                </button>
+                <ul style="margin-left: 10px" class="dropdown-menu" role="menu">
+                    <?php foreach (\app\consts\HouseConst::$buy_type as $key => $name): ?>
+                        <li class="li_on_click" role="presentation" tag="<?= $key ?>">
+                            <a role="menuitem" tabindex="-1" href="javascript:void(0);"><?= $name ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">单价
+            <label class="col-sm-3 control-label" style="width: 12%">单价 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text"  class="form-control" style="width: 460px; display: inline"
-                       value="">元
+                <input type="number"  class="form-control" style="width: 460px; display: inline"
+                       value="" name="unit_price">元
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">总价
+            <label class="col-sm-3 control-label" style="width: 12%">总价 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text"  class="form-control" style="width: 460px; display: inline"
-                       value="">万元
+                <input type="number"  class="form-control" style="width: 460px; display: inline"
+                       value="" name="total_price">万元
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">朝向
+            <label class="col-sm-3 control-label" style="width: 12%">朝向 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" value="">
+                <input type="text" class="form-control" value="" name="face" placeholder="请输入10个字以内">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">建筑面积
+            <label class="col-sm-3 control-label" style="width: 12%">建筑面积 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
                 <input type="text" class="form-control" style="width: 460px; display: inline"
-                       value="">平米
+                       value="" name="build_area">平米
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">房屋设施
+            <label class="col-sm-3 control-label" style="width: 12%">房屋设施 <fond style="color: red">*</fond>
             </label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" value="">
+            <div class="col-sm-6" style="width: 900px;">
+                <input type="text" class="form-control" value="" name="house_facility" placeholder="请输入200个字以内">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">房屋描述
+            <label class="col-sm-3 control-label" style="width: 12%">房屋描述 <fond style="color: red">*</fond>
             </label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" value="">
+            <div class="col-sm-6" style="width: 900px;">
+                <input type="text" class="form-control" value="" name="house_description" placeholder="请输入200个字以内">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">楼层单元
+            <label class="col-sm-3 control-label" style="width: 12%">楼层单元 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" value="">
+                <input type="text" class="form-control" value="" name="floor_unit" placeholder="请输入20个字以内">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">关键字
+            <label class="col-sm-3 control-label" style="width: 12%">关键字 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" value="">
+                <input type="text" class="form-control" value="" name="keywords" placeholder="请输入50个字以内">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">房屋图片1
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
+                <input type="file" id="img_1" name="img_1" style="display:inline">
+                <input type="button" tag="img_1" value="上传" class="upload_file">
+                <input type="hidden" name="img_1_url">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">房屋图片2
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
+                <input type="file" id="img_2" name="img_2" style="display:inline">
+                <input type="button" tag="img_2" value="上传" class="upload_file">
+                <input type="hidden" name="img_2_url">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">房屋图片3
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
+                <input type="file" id="img_3" name="img_3" style="display:inline">
+                <input type="button" tag="img_3" value="上传" class="upload_file">
+                <input type="hidden" name="img_3_url">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">房屋图片4
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
+                <input type="file" id="img_4" name="img_4" style="display:inline">
+                <input type="button" tag="img_4" value="上传" class="upload_file">
+                <input type="hidden" name="img_4_url">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">房屋图片5
+            </label>
+            <div class="col-sm-6">
+                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
+                <input type="file" id="img_5" name="img_5" style="display:inline">
+                <input type="button" tag="img_5" value="上传" class="upload_file">
+                <input type="hidden" name="img_5_url">
             </div>
         </div>
         <div class="form-group">
@@ -539,10 +633,40 @@ use app\consts\HouseConst;
             var $property_type_id = $('#dropdownMenu3').attr('tag');
             var $address = $('input[name=address]').val().trim();
             var $property_company = $('input[name=property_company]').val().trim();
-            
-            var $address = $('input[name=address]').val().trim();
-            var $address = $('input[name=address]').val().trim();
-            var $address = $('input[name=address]').val().trim();
+            var $house_age = $('input[name=house_age]').val().trim();
+            var $in_floor = $('input[name=in_floor]').val().trim();
+            var $total_floor = $('input[name=total_floor]').val().trim();
+            var $jishi = $('input[name=jishi]').val().trim();
+            var $jitin = $('input[name=jitin]').val().trim();
+            var $jiwei = $('input[name=jiwei]').val().trim();
+            var $jichu = $('input[name=jichu]').val().trim();
+            var $decoration_dropdownMenu = $('#decoration_dropdownMenu').attr('tag');
+            var $right_type_dropdownMenu = $('#right_type_dropdownMenu').attr('tag');
+            var $buy_type_dropdownMenu = $('#buy_type_dropdownMenu').attr('tag');
+            var $unit_price = $('input[name=unit_price]').val().trim();
+            var $total_price = $('input[name=total_price]').val().trim();
+            var $face = $('input[name=face]').val().trim();
+            var $build_area = $('input[name=build_area]').val().trim();
+            var $house_facility = $('input[name=house_facility]').val().trim();
+            var $house_description = $('input[name=house_description]').val().trim();
+            var $keywords = $('input[name=keywords]').val().trim();
+            if ($area_id == 0) {
+                alert('请选择片区！');
+                return;
+            }
+            if ($property_type_id == 0) {
+                alert('请选择物业类型！');
+                return;
+            }
+            if (!checkVal($property_company, '物业公司', true, 0, 50)) {
+                return;
+            }
+            if (!checkVal($property_company, '物业公司', true, 0, 50)) {
+                return;
+            }
+
+
+
 
 
             var $build_type = $('#dropdownMenu5').attr('tag');
@@ -554,14 +678,6 @@ use app\consts\HouseConst;
                 $is_school_house = 0;
             $tag = getCheckBoxStr($tag);
             var $community_img = $('input[name=community_img_url]').val().trim();
-            if ($area_id == 0) {
-                alert('请选择片区！');
-                return;
-            }
-            if ($property_type_id == 0) {
-                alert('请选择物业类型！');
-                return;
-            }
             if ($lon == 0 || $lat == 0) {
                 alert('请选择经纬度！');
                 return;
