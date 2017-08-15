@@ -225,7 +225,7 @@ use app\consts\HouseConst;
             <label class="col-sm-3 control-label" style="width: 12%">建筑面积 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" style="width: 460px; display: inline"
+                <input type="number" class="form-control" style="width: 460px; display: inline"
                        value="" name="build_area">平米
             </div>
         </div>
@@ -640,13 +640,14 @@ use app\consts\HouseConst;
             var $jitin = $('input[name=jitin]').val().trim();
             var $jiwei = $('input[name=jiwei]').val().trim();
             var $jichu = $('input[name=jichu]').val().trim();
-            var $decoration_dropdownMenu = $('#decoration_dropdownMenu').attr('tag');
-            var $right_type_dropdownMenu = $('#right_type_dropdownMenu').attr('tag');
-            var $buy_type_dropdownMenu = $('#buy_type_dropdownMenu').attr('tag');
+            var $decoration_id = $('#decoration_dropdownMenu').attr('tag');
+            var $right_type_id = $('#right_type_dropdownMenu').attr('tag');
+            var $buy_type_id = $('#buy_type_dropdownMenu').attr('tag');
             var $unit_price = $('input[name=unit_price]').val().trim();
             var $total_price = $('input[name=total_price]').val().trim();
             var $face = $('input[name=face]').val().trim();
             var $build_area = $('input[name=build_area]').val().trim();
+            var $floor_unit = $('input[name=floor_unit]').val().trim();
             var $house_facility = $('input[name=house_facility]').val().trim();
             var $house_description = $('input[name=house_description]').val().trim();
             var $keywords = $('input[name=keywords]').val().trim();
@@ -664,11 +665,63 @@ use app\consts\HouseConst;
             if (!checkVal($property_company, '物业公司', true, 0, 50)) {
                 return;
             }
-
-
-
-
-
+            if (!checkNum($house_age, '房龄', true)) {
+                return;
+            }
+            if (!checkNum($in_floor, '所在楼层', true)) {
+                return;
+            }
+            if (!checkNum($total_floor, '总楼层', true)) {
+                return;
+            }
+            if (!checkNum($jishi, '户型', true)) {
+                return;
+            }
+            if (!checkNum($jitin, '户型', true)) {
+                return;
+            }
+            if (!checkNum($jiwei, '户型', true)) {
+                return;
+            }
+            if (!checkNum($jichu, '户型', true)) {
+                return;
+            }
+            if ($decoration_id == 0) {
+                alert('请选择装修情况！');
+                return;
+            }
+            if ($right_type_id == 0) {
+                alert('请选择产权类型！');
+                return;
+            }
+            if ($buy_type_id == 0) {
+                alert('请选择购买方式！');
+                return;
+            }
+            if (!checkNum($unit_price, '单价', true)) {
+                return;
+            }
+            if (!checkNum($total_price, '总价', true)) {
+                return;
+            }
+            if (!checkVal($face, '朝向', true, 0, 10)) {
+                return;
+            }
+            if (!checkNum($build_area, '建筑面积', true)) {
+                return;
+            }
+            if (!checkVal($house_facility, '房屋设施', true, 0, 200)) {
+                return;
+            }
+            if (!checkVal($house_description, '房屋描述', true, 0, 200)) {
+                return;
+            }
+            if (!checkVal($floor_unit, '楼层单元', true, 0, 20)) {
+                return;
+            }
+            if (!checkVal($keywords, '关键字', true, 0, 200)) {
+                return;
+            }
             var $build_type = $('#dropdownMenu5').attr('tag');
             var $tag = $('input:checkbox[name=tag]:checked');
             var $is_school_house = $('input[name=is_school_house]').is(':checked');
