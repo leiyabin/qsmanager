@@ -24,12 +24,8 @@ function checkNum(val, name, required) {
         alert(name + '不能为空');
         res = false;
     }
-    if (val != '' && minlenght !== undefined && val.length < minlenght) {
-        alert(name + '长度不能小于' + minlenght);
-        res = false;
-    }
-    if (val != '' && maxlength !== undefined && val.length > maxlength) {
-        alert(name + '长度不能大于' + maxlength);
+    if(isNaN(val)){
+        alert(name +'必须是数字！');
         res = false;
     }
     return res;

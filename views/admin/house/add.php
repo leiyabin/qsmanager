@@ -658,7 +658,7 @@ use app\consts\HouseConst;
                 alert('请选择物业类型！');
                 return;
             }
-            if (!checkVal($property_company, '物业公司', true, 0, 50)) {
+            if (!checkVal($address, '地址', true, 0, 50)) {
                 return;
             }
             if (!checkVal($property_company, '物业公司', true, 0, 50)) {
