@@ -259,6 +259,85 @@ use app\consts\HouseConst;
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">房屋图片1
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
+                <input type="file" id="img_1" name="img_1" style="display:inline">
+                <input type="button" tag="img_1" value="上传" class="upload_file">
+                <input type="hidden" name="img_1_url" value="<?= Utils::getValue($house, 'img_1', ''); ?>">
+                <?php
+                if (!empty($house->img_1_url)) {
+                    echo '<a target="_blank" class="upload_res" href="' . $house->img_1_url . '">点击查看</a>';
+                }
+                ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">房屋图片2
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
+                <input type="file" id="img_2" name="img_2" style="display:inline">
+                <input type="button" tag="img_2" value="上传" class="upload_file">
+                <input type="hidden" name="img_2_url" value="<?= Utils::getValue($house, 'img_2', ''); ?>">
+                <?php
+                if (!empty($house->img_2_url)) {
+                    echo '<a target="_blank" class="upload_res" href="' . $house->img_2_url . '">点击查看</a>';
+                }
+                ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">房屋图片3
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
+                <input type="file" id="img_3" name="img_3" style="display:inline">
+                <input type="button" tag="img_3" value="上传" class="upload_file">
+                <input type="hidden" name="img_3_url" value="<?= Utils::getValue($house, 'img_3', ''); ?>">
+                <?php
+                if (!empty($house->img_3_url)) {
+                    echo '<a target="_blank" class="upload_res" href="' . $house->img_3_url . '">点击查看</a>';
+                }
+                ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">房屋图片4
+                <fond style="color: red">*</fond>
+            </label>
+            <div class="col-sm-6">
+                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
+                <input type="file" id="img_4" name="img_4" style="display:inline">
+                <input type="button" tag="img_4" value="上传" class="upload_file">
+                <input type="hidden" name="img_4_url" value="<?= Utils::getValue($house, 'img_4', ''); ?>">
+                <?php
+                if (!empty($house->img_4_url)) {
+                    echo '<a target="_blank" class="upload_res" href="' . $house->img_4_url . '">点击查看</a>';
+                }
+                ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" style="width: 12%">房屋图片5
+            </label>
+            <div class="col-sm-6">
+                <label style="color: blue;display: block;">*请上传图片尺寸524*360（或是长:宽=3:2）的图片</label>
+                <input type="file" id="img_5" name="img_5" style="display:inline">
+                <input type="button" tag="img_5" value="上传" class="upload_file">
+                <input type="hidden" name="img_5_url" value="<?= Utils::getValue($house, 'img_5', ''); ?>">
+                <?php
+                if (!empty($house->img_5_url)) {
+                    echo '<a target="_blank" class="upload_res" href="' . $house->img_5_url . '">点击查看</a>';
+                }
+                ?>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-3 control-label" style="width: 12%">设置推荐
                 <fond style="color: red">*</fond>
             </label>
@@ -313,7 +392,7 @@ use app\consts\HouseConst;
             <div class="col-sm-6 dropdown">
                 <button style="width: 200px;" class="btn btn-default dropdown-toggle" type="button"
                         tag="<?= Utils::getValue($house->house_attach, 'deed_year', 0); ?>"
-                        id="dropdownMenu1"
+                        id="dropdownMenu4"
                         data-toggle="dropdown">
                     <?= Utils::getValue($house->house_attach, 'deed_year_name', '请选择房本年限'); ?>
                 </button>
@@ -472,7 +551,7 @@ use app\consts\HouseConst;
             <div class="col-sm-6 dropdown">
                 <button style="width: 200px;" class="btn btn-default dropdown-toggle" type="button"
                         tag="<?= Utils::getValue($house->house_attach, 'build_type', 0); ?>"
-                        id="dropdownMenu2"
+                        id="dropdownMenu5"
                         data-toggle="dropdown">
                     <?= Utils::getValue($house->house_attach, 'build_type_name', '请选择建筑类型'); ?>
                 </button>
@@ -561,7 +640,7 @@ use app\consts\HouseConst;
             var $lat = $('input[name=lat]').val().trim();
             var $sale_time = $('input[name=sale_time]').val().trim();
             var $last_sale_time = $('input[name=last_sale_time]').val().trim();
-            var $deed_year = $('#dropdownMenu1').attr('tag');
+            var $deed_year = $('#dropdownMenu4').attr('tag');
             var $is_only = $('input:checkbox[name=is_only]');
             if ($is_only[0].checked) {
                 $is_only = 1;
@@ -694,7 +773,7 @@ use app\consts\HouseConst;
             if (!checkVal($img_4, '房屋图片4', true)) {
                 return;
             }
-            var $build_type = $('#dropdownMenu2').attr('tag');
+            var $build_type = $('#dropdownMenu5').attr('tag');
             var $id = $('input[name=id]').val().trim();
             var $tag = $('input:checkbox[name=tag]:checked');
             var $is_school_house = $('input[name=is_school_house]').is(':checked');

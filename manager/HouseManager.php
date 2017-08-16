@@ -31,6 +31,11 @@ class HouseManager
                 $res->house_attach->deed_year_name = HouseConst::$deed_year[$res->house_attach->deed_year];
                 $res->house_attach->build_type_name = HouseConst::$build_type[$res->house_attach->build_type];
                 $res->house_attach->community_img_url = Utils::getImgUrl($res->house_attach->community_img);
+                $res->img_1_url = Utils::getImgUrl($res->img_1);
+                $res->img_2_url = Utils::getImgUrl($res->img_2);
+                $res->img_3_url = Utils::getImgUrl($res->img_3);
+                $res->img_4_url = Utils::getImgUrl($res->img_4);
+                $res->img_5_url = Utils::getImgUrl($res->img_5);
             }
             return $res;
         } else {
