@@ -488,7 +488,7 @@ use app\consts\HouseConst;
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" style="width: 12%">建筑年代
+            <label class="col-sm-3 control-label" style="width: 12%">小区建筑年代
                 <fond style="color: red">*</fond>
             </label>
             <div class="col-sm-6">
@@ -681,19 +681,19 @@ use app\consts\HouseConst;
             if (!checkNum($total_floor, '总楼层', true)) {
                 return;
             }
-            if (!checkNum($jishi, '户型', true)) {
+            if (!checkVal($jishi, '户型', true)) {
                 return;
             }
-            if (!checkNum($jitin, '户型', true)) {
+            if (!checkVal($jitin, '户型', true)) {
                 return;
             }
-            if (!checkNum($jiwei, '户型', true)) {
+            if (!checkVal($jiwei, '户型', true)) {
                 return;
             }
-            if (!checkNum($jichu, '户型', true)) {
+            if (!checkVal($jichu, '户型', true)) {
                 return;
             }
-            if (!checkNum($jiyangtai, '户型', true)) {
+            if (!checkVal($jiyangtai, '户型', true)) {
                 return;
             }
             if ($decoration_id == 0) {
@@ -797,7 +797,7 @@ use app\consts\HouseConst;
             if (!checkVal($community_average_price, '小区均价', true)) {
                 return;
             }
-            if (!checkVal($build_year, '建筑年代', true)) {
+            if (!checkVal($build_year, '小区建筑年代', true)) {
                 return;
             }
             if (!checkVal($total_building, '楼栋总数', true)) {
